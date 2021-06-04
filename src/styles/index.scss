@@ -1,3 +1,157 @@
 /* 
     General Styles
 */
+body{
+    font-family: 'Saira Extra Condensed', sans-serif;
+}
+//navbar
+.navbar{
+    background-color: #761210;
+}
+.btn{
+    background: transparent;
+    color:white;
+    font-size: 20px;
+}
+.fas{
+    font-size: 20px;
+}
+
+
+//user-login
+
+//backgroud 
+.login  {
+background: url(../img/fondoUser.jpg) ;
+position: fixed;
+min-width: 100%;
+min-height: 100%;
+background-size: cover;
+background-position:center ;
+}
+
+
+.red{
+    width: 250px;
+    height: 500px;
+    background-color: #5E0000;
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+.text{
+font-style: normal;
+font-weight: normal;
+font-size: 72px;
+line-height: 113px;
+color: #FFFFFF;
+position: relative;
+bottom: 50%;
+left: 15px;
+}
+
+
+//Form - login
+
+.formcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+.formLogin{
+    height: 500px;
+    background: #C4C4C4;
+    width: 250px;
+  font-size: 25px;
+color: #5E0000;
+padding-left: 15px;
+padding-top: 15px;
+padding-right: 15px;
+}
+.form-group{
+    border-radius: 0px;
+    border-bottom: solid 1px #5E0000;
+}
+.btnLogin{
+    background: #841F27;
+    border-radius: 50px;
+    width: 150px;
+    color: white;
+    margin: auto;
+}
+
+.formLogin h1{
+    color: #5E0000;
+    font-size: 25px;
+    margin-top: 15px;
+}
+
+//forget password
+.forget {
+background: url(../img/fondoUser.jpg) ;
+position: fixed;
+min-width: 100%;
+min-height: 100%;
+background-size: cover;
+background-position:center ;
+}
+
+.forget h1{
+font-style: normal;
+font-weight: normal;
+font-size: 40px;
+line-height: 113px;
+color: #FFFFFF;
+position: relative;
+bottom: 50%;
+left: 15px;
+}
+
+//signUP
+
+//fomdo
+.signup {
+background: url(../img/fondoUser.jpg) ;
+position: fixed;
+min-width: 100%;
+min-height: 100%;
+background-size: cover;
+background-position:center ;
+}
+//rectangulo rojo
+.divImg{
+    width: 250px;
+    height: 750px;
+    background-color: #5E0000;
+    padding-top: 25px;
+    padding-left: 17px;
+}
+
+
+.formSign{
+    
+    height: 750px;
+    background: #C4C4C4;
+    width: 250px;
+  font-size: 15px;
+color: #5E0000;
+padding-left: 15px;
+padding-top: 15px;
+padding-right: 15px;
+
+}
+
+.formSingcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.Grupinput{
+    display: flex;
+}
+.Grupinput i{
+display: none;
+}
