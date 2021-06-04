@@ -16,6 +16,7 @@ export const FormSignUp = () => {
 	};
 
 	const validation = () => {
+        
 		if (regexp) {
 			if (regexp.test(password.field)) {
 				console.log("imput correcto");
