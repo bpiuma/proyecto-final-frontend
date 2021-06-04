@@ -1,15 +1,22 @@
 import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import { Footer } from "../component/footer";
+// Falta importar NavBar!!
+import { Cartas_inicio } from "../component/cartas_inicio";
 import "../../styles/home.scss";
+import { Link } from "react-router-dom";
 
 export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
+	<div>
+		<div className="container d-flex">
+			<div id="contenedor_boton1">
+				<button id="boton_galeria">Galery</button>
+			</div>
+			<div id="space" />
+			<div id="contenedor_boton2">
+				<button id="boton_eventos">Events/Blog</button>
+			</div>
+		</div>
+
+		<Cartas_inicio />
 	</div>
 );

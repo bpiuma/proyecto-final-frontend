@@ -11,7 +11,6 @@ export const ForgetPassword = () => {
 
 	return (
 		<div className="forget">
-			<Navbar />
 			<div className="formcontainer">
 				<div className="red">
 					<img src={botellaVino} height="450" />
