@@ -12,15 +12,26 @@ export const FormForgetPassword = () => {
 					className="form-control bg-transparent border-0"
 					id="exampleInputEmail1"
 					aria-describedby="emailHelp"
+					required
 				/>
 			</div>
 			<div className="form-group">
 				<label htmlFor="exampleInputPassword1">New Password</label>
-				<input type="password" className="form-control bg-transparent border-0" id="exampleInputPassword1" />
+				<input
+					type="password"
+					className="form-control bg-transparent border-0"
+					id="exampleInputPassword1"
+					required
+				/>
 			</div>
 			<div className="form-group">
 				<label htmlFor="exampleInputPassword1">Confirm Password</label>
-				<input type="password" className="form-control bg-transparent border-0" id="exampleInputPassword1" />
+				<input
+					type="password"
+					className="form-control bg-transparent border-0"
+					id="exampleInputPassword1"
+					required
+				/>
 			</div>
 
 			<button type="submit" className="btnLogin">

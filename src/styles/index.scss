@@ -4,12 +4,19 @@
 body{
     font-family: 'Saira Extra Condensed', sans-serif;
 }
+//navbar
 .navbar{
     background-color: #761210;
+}
+.btn{
+    background: transparent;
+    color:white;
+    font-size: 20px;
 }
 .fas{
     font-size: 20px;
 }
+
 
 //user-login
 
@@ -104,14 +111,14 @@ left: 15px;
 //signUP
 
 //fomdo
-.signup {
+/*.signup {
 background: url(../img/fondoUser.jpg) ;
 position: fixed;
 min-width: 100%;
 min-height: 100%;
 background-size: cover;
 background-position:center ;
-}
+}*/
 
 //rectangulo rojo
 .divImg{
@@ -119,7 +126,7 @@ background-position:center ;
     height: 750px;
     background-color: #5E0000;
     padding-top: 25px;
-    padding-left: 25px;
+    padding-left: 17px;
 }
 
 
@@ -141,4 +148,11 @@ padding-right: 15px;
     justify-content: center;
     align-items: center;
     margin-top: 15px;
+}
+
+.Grupinput{
+    display: flex;
+}
+.Grupinput i{
+display: none;
 }

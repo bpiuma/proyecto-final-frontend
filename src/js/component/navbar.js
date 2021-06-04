@@ -12,7 +12,9 @@ export const Navbar = () => {
 			</Link>
 			<div className="ml-auto">
 				<Link to="/login">
-					<i className="fas fa-user text-white mr-3 " />
+					<button className="btn">
+						<i className="fas fa-user text-white mr-3 " /> Mi cuenta
+					</button>
 				</Link>
 			</div>
 			<Link to="/">

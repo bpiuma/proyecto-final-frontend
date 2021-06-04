@@ -11,6 +11,7 @@ export const FormLogin = () => {
 					className="form-control bg-transparent border-0"
 					id="exampleInputEmail1"
 					aria-describedby="emailHelp"
+					required
 				/>
 				{/*<small id="emailHelp" className="form-text text-muted">
 					Well never share your email with anyone else.
@@ -18,7 +19,12 @@ export const FormLogin = () => {
 			</div>
 			<div className="form-group">
 				<label htmlFor="exampleInputPassword1">Password</label>
-				<input type="password" className="form-control bg-transparent border-0" id="exampleInputPassword1" />
+				<input
+					type="password"
+					className="form-control bg-transparent border-0"
+					id="exampleInputPassword1"
+					required
+				/>
 			</div>
 
 			<button type="submit" className="btnLogin">
