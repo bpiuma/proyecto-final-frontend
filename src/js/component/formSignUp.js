@@ -1,116 +1,124 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import copaVino from "../../img/copaVino.png";
-import { useState } from "react";
+import { Context } from "../store/appContext";
+
+import { useForm } from "react-hook-form";
 
 export const FormSignUp = () => {
-	const [password, setPassword] = useState({ field: "", valid: null });
+	const { store, actions } = useContext(Context);
 
-	const expression = {
-		regExPassword: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
-	};
-
-	const change = e => {
-		//console.log(e.target.value);
-		setPassword({ ...password, field: e.target.value });
-	};
-
-	const validation = () => {
-        
-		if (regexp) {
-			if (regexp.test(password.field)) {
-				console.log("imput correcto");
-			}
-		} else {
-			console.log("imput incorrecto");
-		}
-	};
+	const { register, handleSubmit } = useForm();
+	const onSubmit = data => alert(JSON.stringify(data));
 
 	return (
-		<form className="formSign">
+		<form className="formSign" onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-group">
-				<label htmlFor="name">First Name</label>
+				<label htmlFor="firstName">First Name</label>
 				<div className="Grupinput">
 					<input
 						className="form-control bg-transparent border-0"
 						type="text"
-						id="name"
-						placeholder="Ej.Juan"
+						id="firstName"
+						{...register("firstName")}
+						placeholder="Please enter your first name"
+						autoFocus
 						required
 					/>
 					<i className="fas fa-times-circle" />
 				</div>
 				{false && (
 					<div className="msj">
-						<p>Plesa, the name can only contain letters</p>
+						<p>Please, the name can only contain letters</p>
 					</div>
 				)}
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="exampleInputPassword1">Last Name</label>
+				<label htmlFor="lastName">Last Name</label>
 				<input
 					type="text"
 					className="form-control bg-transparent border-0"
-					id="exampleInputPassword1"
+					id="lastName"
+					{...register("lastName")}
+					placeholder="Please enter your last name"
 					required
 				/>
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="exampleInputPassword1">Adress</label>
+				<label htmlFor="address">Address</label>
 				<input
 					type="text"
 					className="form-control bg-transparent border-0"
-					id="exampleInputPassword1"
+					id="address"
+					{...register("address")}
+					placeholder="Please enter your address"
 					required
 				/>
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="phone">Phone</label>
-				<input type="phone" className="form-control bg-transparent border-0" id="phone" required />
+				<label htmlFor="phone1">Phone 1</label>
+				<input
+					type="phone"
+					className="form-control bg-transparent border-0"
+					id="phone1"
+					{...register("phone1")}
+					placeholder="Please enter your movil number"
+					required
+				/>
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="phone">Phone</label>
-				<input type="phone" className="form-control bg-transparent border-0" id="phone" required />
+				<label htmlFor="phone2">Phone 2</label>
+				<input
+					type="phone"
+					className="form-control bg-transparent border-0"
+					id="phone2"
+					placeholder="Please enter your fixed number"
+					{...register("phone2")}
+				/>
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="exampleInputPassword1">Date of birth</label>
+				<label htmlFor="dateOfBirth">Date of Birth</label>
 				<input
 					type="date"
 					className="form-control bg-transparent border-0"
-					id="exampleInputPassword1"
+					id="dateOfBirth"
+					{...register("dateOfBirth")}
+					placeholder="Please enter your date of birth(you must be 18 years old to register)"
 					required
 				/>
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="exampleInputEmail1">Email</label>
+				<label htmlFor="email">Email</label>
 				<input
 					type="email"
 					className="form-control bg-transparent border-0"
-					id="exampleInputEmail1"
+					id="email"
 					aria-describedby="emailHelp"
+					{...register("email")}
+					placeholder="Please enter your email address"
 					required
 				/>
 			</div>
 			<div className="form-group">
-				<label htmlFor="exampleInputPassword1">Password</label>
+				<label htmlFor="password">Password</label>
 				<input
 					type="password"
 					className="form-control bg-transparent border-0"
-					id="exampleInputPassword1"
-					regexp={expression.regExPassword}
-					value={password.field}
-					onChange={change}
-					onKeyUp={validation}
-					onBlur={validation}
+					id="password"
+					{...register("password")}
+					placeholder="Please enter your password(8 characters min.)"
+					required
 				/>
 			</div>
-
+			<div className={store.userFailed ? "d-inline" : "d-none"}>
+				<p className="alert alert-danger">{store.userFailed ? store.userFailed : ""}</p>
+			</div>
 			<button type="submit" className="btnLogin">
 				Sign Up
 			</button>

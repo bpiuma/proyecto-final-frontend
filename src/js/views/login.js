@@ -11,7 +11,6 @@ export const Login = () => {
 
 	return (
 		<div className="login">
-			<Navbar />
 			<div className="formcontainer">
 				<div className="red">
 					<img src={botellaVino} height="450" />
