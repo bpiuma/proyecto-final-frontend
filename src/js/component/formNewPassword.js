@@ -2,36 +2,35 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
 
-export const FormForgetPassword = () => {
+export const FormNewPassword = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const [email, setEmail] = useState(false);
+	const [pass, setPass] = useState(false);
 
 	const onSubmit = data => {
-		actions.passRecovery(data);
-		setEmail(true);
+		actions.newPass(data);
+		setPass(true);
 	};
 
 	return (
 		<form className="formLogin" onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-group">
-				<label htmlFor="email">Email</label>
+				<label htmlFor="password">Set New Password</label>
 				<input
-					type="email"
+					type="password"
 					className="form-control bg-transparent border-0"
-					id="email"
-					aria-describedby="emailHelp"
-					{...register("email")}
-					placeholder="Please enter your email address"
+					id="password"
+					{...register("password")}
+					placeholder="Please enter your new password"
 					required
 				/>
 			</div>
 			<button type="submit" className="btnLogin">
 				Submit
 			</button>
-			{email ? (
+			{pass ? (
 				<div className="msj mt-3">
-					<p>Please check your mailbox</p>
+					<p>Password succesfully changed</p>
 				</div>
 			) : (
 				""
