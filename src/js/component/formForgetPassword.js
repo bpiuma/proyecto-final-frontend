@@ -1,13 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import copaVino from "../../img/copaVino.png";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Context } from "../store/appContext";
 
 export const FormForgetPassword = () => {
+	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const onSubmit = data => alert(JSON.stringify(data));
+	const [email, setEmail] = useState(false);
+
+	const onSubmit = data => {
+		actions.passRecovery(data);
+		setEmail(true);
+	};
+
 	return (
-		<form className="formLogin">
+		<form className="formLogin" onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-group">
 				<label htmlFor="email">Email</label>
 				<input
@@ -20,32 +26,16 @@ export const FormForgetPassword = () => {
 					required
 				/>
 			</div>
-			<div className="form-group">
-				<label htmlFor="password">New Password</label>
-				<input
-					type="password"
-					className="form-control bg-transparent border-0"
-					id="password"
-					{...register("password")}
-					placeholder="Please enter your password(8 characters min.)"
-					required
-				/>
-			</div>
-			<div className="form-group">
-				<label htmlFor="password">Confirm Password</label>
-				<input
-					type="password"
-					className="form-control bg-transparent border-0"
-					id="password"
-					{...register("password")}
-					placeholder="Please enter your password(8 characters min.)"
-					required
-				/>
-			</div>
-
 			<button type="submit" className="btnLogin">
 				Submit
 			</button>
+			{email ? (
+				<div className="msj mt-3">
+					<p>Please check your mailbox</p>
+				</div>
+			) : (
+				""
+			)}
 		</form>
 	);
 };
