@@ -49,7 +49,6 @@ bottom: 50%;
 left: 15px;
 }
 
-
 //Form - login
 
 .formcontainer{
@@ -101,6 +100,26 @@ font-style: normal;
 font-weight: normal;
 font-size: 40px;
 line-height: 113px;
+color: #FFFFFF;
+position: relative;
+bottom: 50%;
+left: 15px;
+}
+
+//forget password
+.newPass {
+background: url(../img/fondoUser.jpg) ;
+min-width: 100%;
+min-height: 100%;
+background-size: cover;
+background-position:center ;
+}
+
+.newPass h1{
+font-style: normal;
+font-weight: normal;
+font-size: 40px;
+line-height: 1.3em;
 color: #FFFFFF;
 position: relative;
 bottom: 50%;

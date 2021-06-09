@@ -15,7 +15,7 @@ export const FormNewPassword = () => {
 	return (
 		<form className="formLogin" onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-group">
-				<label htmlFor="password">Password</label>
+				<label htmlFor="password">Set New Password</label>
 				<input
 					type="password"
 					className="form-control bg-transparent border-0"

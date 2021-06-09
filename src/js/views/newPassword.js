@@ -10,7 +10,7 @@ export const NewPassword = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="forget">
+		<div className="newPass">
 			<div className="formcontainer">
 				<div className="red">
 					<img src={botellaVino} height="450" />

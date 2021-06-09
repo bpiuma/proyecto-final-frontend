@@ -7,10 +7,7 @@ export const FormLogin = () => {
 	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
 
-	const onSubmit = data => {
-		console.log(JSON.stringify(data));
-		actions.loginUser(data);
-	};
+	const onSubmit = data => actions.loginUser(data);
 
 	return (
 		<form className="formLogin" onSubmit={handleSubmit(onSubmit)}>
