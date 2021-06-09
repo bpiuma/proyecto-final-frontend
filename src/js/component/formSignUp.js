@@ -1,30 +1,32 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import copaVino from "../../img/copaVino.png";
-import { Context } from "../store/appContext";
-
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { Context } from "../store/appContext";
 
 export const FormSignUp = () => {
 	const { store, actions } = useContext(Context);
+	const {
+		register,
+		handleSubmit,
+		formState: { errors }
+	} = useForm();
 
-	const { register, handleSubmit } = useForm();
-	const onSubmit = data => alert(JSON.stringify(data));
+	const onSubmit = data => actions.createUser(data);
 
 	return (
 		<form className="formSign" onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-group">
-				<label htmlFor="firstName">First Name</label>
+				<label htmlFor="first_name">First Name</label>
 				<div className="Grupinput">
 					<input
 						className="form-control bg-transparent border-0"
 						type="text"
-						id="firstName"
-						{...register("firstName")}
+						id="first_name"
+						{...register("first_name")}
 						placeholder="Please enter your first name"
 						autoFocus
 						required
 					/>
+					{errors.first_name && <span>This field is required</span>}
 					<i className="fas fa-times-circle" />
 				</div>
 				{false && (
@@ -35,12 +37,12 @@ export const FormSignUp = () => {
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="lastName">Last Name</label>
+				<label htmlFor="last_name">Last Name</label>
 				<input
 					type="text"
 					className="form-control bg-transparent border-0"
-					id="lastName"
-					{...register("lastName")}
+					id="last_name"
+					{...register("last_name")}
 					placeholder="Please enter your last name"
 					required
 				/>
@@ -59,35 +61,35 @@ export const FormSignUp = () => {
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="phone1">Phone 1</label>
+				<label htmlFor="phone_1">Phone 1</label>
 				<input
 					type="phone"
 					className="form-control bg-transparent border-0"
-					id="phone1"
-					{...register("phone1")}
+					id="phone_1"
+					{...register("phone_1")}
 					placeholder="Please enter your movil number"
 					required
 				/>
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="phone2">Phone 2</label>
+				<label htmlFor="phone_2">Phone 2</label>
 				<input
 					type="phone"
 					className="form-control bg-transparent border-0"
-					id="phone2"
+					id="phone_2"
 					placeholder="Please enter your fixed number"
-					{...register("phone2")}
+					{...register("phone_2")}
 				/>
 			</div>
 
 			<div className="form-group">
-				<label htmlFor="dateOfBirth">Date of Birth</label>
+				<label htmlFor="date_of_birth">Date of Birth</label>
 				<input
 					type="date"
 					className="form-control bg-transparent border-0"
-					id="dateOfBirth"
-					{...register("dateOfBirth")}
+					id="date_of_birth"
+					{...register("date_of_birth")}
 					placeholder="Please enter your date of birth(you must be 18 years old to register)"
 					required
 				/>
