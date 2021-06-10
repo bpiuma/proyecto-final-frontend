@@ -1,39 +1,85 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const FormLogin = () => {
 	const { store, actions } = useContext(Context);
-	const { register, handleSubmit } = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors }
+	} = useForm();
+	const [auth, setAuth] = useState(false);
+	const [msg, setMsg] = useState("");
 
-	const onSubmit = data => actions.loginUser(data);
+	const loginUser = async data => {
+		var myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+
+		var raw = JSON.stringify(data);
+
+		var requestOptions = {
+			method: "POST",
+			headers: myHeaders,
+			body: raw,
+			redirect: "follow"
+		};
+
+		fetch(process.env.BACKEND_URL + "/login", requestOptions)
+			.then(response => response.json())
+			.then(result => {
+				if (result.message == undefined) {
+					console.log(result);
+					setAuth(true);
+					sessionStorage.setItem("userName", actions.parseJWT(result.token).user.first_name);
+					sessionStorage.setItem("token", result.token);
+					actions.setUser(actions.parseJWT(result.token).user.first_name, result.token);
+				} else {
+					setMsg(result.message);
+				}
+			})
+			.catch(error => console.log("error", error));
+	};
+
+	const onSubmit = data => loginUser(data);
 
 	return (
 		<form className="formLogin" onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-group">
 				<label htmlFor="email">Email</label>
 				<input
-					type="email"
+					//type="email"
 					className="form-control bg-transparent border-0"
 					id="email"
 					aria-describedby="emailHelp"
-					{...register("email")}
+					{...register("email", {
+						required: true
+					})}
 					placeholder="Please enter your email address"
-					required
 				/>
+				<div className="errorMsg">
+					{errors.email && errors.email.type === "required" && <p>This field is required</p>}
+				</div>
 			</div>
+
 			<div className="form-group">
 				<label htmlFor="password">Password</label>
 				<input
 					type="password"
 					className="form-control bg-transparent border-0"
 					id="password"
-					{...register("password")}
+					{...register("password", {
+						required: true
+					})}
 					placeholder="Please enter your password"
-					required
 				/>
+				<div className="errorMsg">
+					{errors.password && errors.password.type === "required" && <p>This field is required</p>}
+				</div>
 			</div>
+
+			<div>{auth ? <Redirect to="/" /> : msg != "" ? <p className="alert alert-danger">{msg}</p> : ""}</div>
 
 			<button type="submit" className="btnLogin">
 				Login
