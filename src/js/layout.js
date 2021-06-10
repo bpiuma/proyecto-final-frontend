@@ -12,7 +12,9 @@ import { Footer } from "./component/footer";
 import { ForgetPassword } from "./views/forgetPassword.js";
 import { NewPassword } from "./views/newPassword.js";
 import { SignUp } from "./views/signUp";
-
+import { Store } from "./views/store";
+import { UpData } from "./views/upData";
+import { Favourite } from "./views/favourite";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -28,8 +30,14 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
+						<Route exact path="/upData">
+							<UpData />
+						</Route>
 						<Route exact path="/login">
 							<Login />
+						</Route>
+						<Route exact path="/favourite">
+							<Favourite />
 						</Route>
 						<Route exact path="/forgetPassword">
 							<ForgetPassword />
@@ -39,6 +47,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/signUp">
 							<SignUp />
+						</Route>
+						<Route exact path="/store">
+							<Store />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
