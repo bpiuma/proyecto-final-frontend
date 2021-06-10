@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const FormLogin = () => {
+	const { store, actions } = useContext(Context);
 	const { register, handleSubmit } = useForm();
-	const onSubmit = data => alert(JSON.stringify(data));
+
+	const onSubmit = data => actions.loginUser(data);
 
 	return (
 		<form className="formLogin" onSubmit={handleSubmit(onSubmit)}>
@@ -27,7 +30,7 @@ export const FormLogin = () => {
 					className="form-control bg-transparent border-0"
 					id="password"
 					{...register("password")}
-					placeholder="Please enter your password(8 characters min.)"
+					placeholder="Please enter your password"
 					required
 				/>
 			</div>
