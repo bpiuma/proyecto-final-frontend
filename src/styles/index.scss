@@ -2,7 +2,8 @@
     General Styles
 */
 body{
-    font-family: 'Saira Extra Condensed', sans-serif;
+    //font-family: 'Saira Extra Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 //navbar
 .navbar{
@@ -13,6 +14,13 @@ body{
     color:white;
     font-size: 20px;
 }
+.user{
+    margin-left: 500px;
+}
+.far{
+    font-size: 25px !important;
+}
+
 .fas{
     font-size: 20px;
 }
@@ -154,3 +162,115 @@ padding-right: 15px;
 .Grupinput i{
 display: none;
 }
+
+//Store
+.store{
+    background: url(../img/fondoeCommerce.jpg) ;
+min-width: 100%;
+min-height: 100%;
+background-size: cover;
+background-position:center ;
+}
+.titleStore{
+    display: block;
+    visibility: hidden;
+}
+
+.eCommerce{
+    margin : auto;
+    width: 70%;
+    height: 1000px;
+}
+.titleBuy{
+  background-color:#5E0000;
+    width: 100%;
+    color: white;
+    margin-bottom: 10px;  
+}
+
+//stile  purchase Summary
+
+.purchaseSummary {
+    float: right;
+    background-color:#5E0000;
+    width: 30%;
+    height: 150px;
+    padding: 15px;  
+}
+.purchaseSummary h5{
+font-size: 30px;
+color: white;
+}
+.purchaseSummary button{
+    color : #5E0000;
+}
+.cost{
+    float: right;
+}
+
+//card buy
+
+.cardBuy{
+     background-color:#C4C4C4;
+    width: 67%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+.cardBuy h5{
+    font-size: 30px;
+    color: black;
+}
+.dropdown button{
+    color: black;
+    font-size: 30px;
+}
+.costDelete{
+    margin-left: 150px;
+}
+.titleBuy{
+    display: flex;
+}
+
+//wishlist
+.wishlist{
+    margin : auto;
+    width: 97%;
+    height: 1000px;
+    box-sizing: border-box;
+}
+
+/*.cardFav{
+    max-width: 25%;
+    height: auto;
+    background-color:#C4C4C4;
+}*/
+.hederFavCard{
+    display: flex;
+    max-width: 25%;
+    height: auto;
+    background-color:#C4C4C4;
+    box-shadow: 1px 1px 4px 2px rgba(0,0,0,.2);
+    margin: 0px;
+}
+
+.infoCard{
+    background-color: #5B284B;
+    width:50% ;
+    text-align: center;
+    color: white;
+    
+}
+
+.infoCard p{
+position: relative;
+display: block;
+}
+
+ .imgCard{
+     width:50% ;
+ }
+.imgCard img{
+    width: 100%;
+
+}
+
