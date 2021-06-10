@@ -173,3 +173,12 @@ padding-right: 15px;
 .Grupinput i{
 display: none;
 }
+
+.errorMsg p{
+    color: red;
+}
+
+.errorMsg p::before {
+  display: inline;
+  content: "⚠ ";
+}
