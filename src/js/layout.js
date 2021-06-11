@@ -14,6 +14,7 @@ import { NewPassword } from "./views/newPassword.js";
 import { ChangePassword } from "./views/changePassword.js";
 import { SignUp } from "./views/signUp";
 import { Store } from "./views/store";
+import { Gallery } from "./views/gallery";
 import { UpData } from "./views/upData";
 import { Favourite } from "./views/favourite";
 //create your first component
@@ -57,6 +58,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
+						</Route>
+						<Route exact path="/gallery">
+							<Gallery />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

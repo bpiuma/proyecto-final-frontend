@@ -1,0 +1,27 @@
+.wine {
+    background: url(../img/fondoGaleria.jpg);
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.gallery {
+    margin: auto;
+    width: 70%;
+    height: 1000px;
+}
+
+.cardGallery {
+    background-color: #C4C4C4;
+    color: #5E0000;
+    font-weight: bold;
+}
+
+.cardGallery h5 {
+    font-weight: bold;
+}
+
+.shoe {
+    background-color: #5E0000;
+}
