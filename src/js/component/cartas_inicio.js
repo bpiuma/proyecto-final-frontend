@@ -4,7 +4,7 @@ import "../../styles/cartas_inicio.scss";
 
 export const Cartas_inicio = () => {
 	return (
-		<div>
+		<>
 			<div className="row">
 				<div className="col-12" id="bienvenida_pag">
 					<div>
@@ -94,6 +94,6 @@ export const Cartas_inicio = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };

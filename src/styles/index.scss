@@ -1,261 +1,257 @@
 /* 
     General Styles
 */
-body{
-    //font-family: 'Saira Extra Condensed', sans-serif;
-    font-family: 'Montserrat', sans-serif;
-}
-//navbar
-.navbar{
-    background-color: #761210;
-}
-.btn{
-    background: transparent;
-    color:white;
-    font-size: 20px;
-}
-.user{
-    margin-left: 500px;
-}
-.far{
-    font-size: 25px !important;
+
+body {
+  font-family: "Roboto", sans-serif;
 }
 
-.fas{
-    font-size: 20px;
+.navbar {
+  background-color: #5e0000;
 }
 
-
-//user-login
-
-//backgroud 
-.login  {
-background: url(../img/fondoUser.jpg) ;
-min-width: 100%;
-min-height: 100%;
-background-size: cover;
-background-position:center ;
+.btn {
+  background: transparent;
+  color: white;
+  font-size: 20px;
 }
 
-
-.red{
-    width: 250px;
-    height: 500px;
-    background-color: #5E0000;
-    padding-top: 25px;
-    padding-left: 25px;
+.user {
+  margin-left: 500px;
 }
 
-.text{
-font-style: normal;
-font-weight: normal;
-font-size: 72px;
-line-height: 113px;
-color: #FFFFFF;
-position: relative;
-bottom: 50%;
-left: 15px;
+.far {
+  font-size: 25px !important;
 }
 
-//Form - login
-
-.formcontainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 80px;
-    margin-bottom: 170px;
+.fas {
+  font-size: 20px;
 }
-.formLogin{
-    height: 500px;
-    background: #C4C4C4;
-    width: 250px;
+
+.login {
+  //background: url(../img/fondoUser.jpg);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.red {
+  width: 250px;
+  height: 500px;
+  background-color: #5e0000;
+  padding-top: 25px;
+  padding-left: 25px;
+}
+
+.text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 72px;
+  line-height: 113px;
+  color: #ffffff;
+  position: relative;
+  bottom: 50%;
+  left: 15px;
+}
+
+.formcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  margin-bottom: 170px;
+}
+
+.formLogin {
+  height: 500px;
+  background: #c4c4c4;
+  width: 250px;
   font-size: 25px;
-color: #5E0000;
-padding-left: 15px;
-padding-top: 15px;
-padding-right: 15px;
-}
-.form-group{
-    border-radius: 0px;
-    border-bottom: solid 1px #5E0000;
-}
-.btnLogin{
-    background: #841F27;
-    border-radius: 50px;
-    width: 150px;
-    color: white;
-    margin: auto;
+  color: #5e0000;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
 }
 
-.formLogin h1{
-    color: #5E0000;
-    font-size: 25px;
-    margin-top: 15px;
+.form-group {
+  border-radius: 0px;
+  border-bottom: solid 1px #5e0000;
 }
 
-//forget password
+.btnLogin {
+  background: #5e0000;
+  border-radius: 50px;
+  width: 150px;
+  color: white;
+  margin: auto;
+}
+
+.formLogin h1 {
+  color: #5e0000;
+  font-size: 25px;
+  margin-top: 15px;
+}
+
 .forget {
-background: url(../img/fondoUser.jpg) ;
-min-width: 100%;
-min-height: 100%;
-background-size: cover;
-background-position:center ;
+  //background: url(../img/fondoUser.jpg);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
-.forget h1{
-font-style: normal;
-font-weight: normal;
-font-size: 40px;
-line-height: 113px;
-color: #FFFFFF;
-position: relative;
-bottom: 50%;
-left: 15px;
+.forget h1 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 113px;
+  color: #ffffff;
+  position: relative;
+  bottom: 50%;
+  left: 15px;
 }
 
-//forget password
 .newPass {
-background: url(../img/fondoUser.jpg) ;
-min-width: 100%;
-min-height: 100%;
-background-size: cover;
-background-position:center ;
+  background: url(../img/fondoUser.jpg);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
-.newPass h1{
-font-style: normal;
-font-weight: normal;
-font-size: 40px;
-line-height: 1.3em;
-color: #FFFFFF;
-position: relative;
-bottom: 50%;
-left: 15px;
+.newPass h1 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 1.3em;
+  color: #ffffff;
+  position: relative;
+  bottom: 50%;
+  left: 15px;
 }
 
-//signUP
-
-//fomdo
 .signup {
-background: url(../img/fondoUser.jpg) ;
-min-width: 100%;
-min-height: 100%;
-background-size: cover;
-background-position:center ;
-}
-//rectangulo rojo
-.divImg{
-    width: 250px;
-    height: 750px;
-    background-color: #5E0000;
-    padding-top: 25px;
-    padding-left: 17px;
+ //background: url(../img/fondoUser.jpg);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
+.divImg {
+  width: 250px;
+  height: 750px;
+  background-color: #5e0000;
+  padding-top: 25px;
+  padding-left: 17px;
+}
 
-.formSign{
-    
-    height: 750px;
-    background: #C4C4C4;
-    width: 350px;
+.formSign {
+  height: 750px;
+  background: #c4c4c4;
+  width: 350px;
   font-size: 15px;
-color: #5E0000;
-padding-left: 15px;
-padding-top: 15px;
-padding-right: 15px;
-overflow-y:scroll
+  color: #5e0000;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  overflow-y: scroll;
 }
 
-.formSingcontainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
+.formSingcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
-.Grupinput{
-    display: flex;
-}
-.Grupinput i{
-display: none;
+.Grupinput {
+  display: flex;
 }
 
-//Store
-.store{
-    background: url(../img/fondoeCommerce.jpg) ;
-min-width: 100%;
-min-height: 100%;
-background-size: cover;
-background-position:center ;
-}
-.titleStore{
-    display: block;
-    visibility: hidden;
+.Grupinput i {
+  display: none;
 }
 
-.eCommerce{
-    margin : auto;
-    width: 70%;
-    height: 1000px;
-}
-.titleBuy{
-  background-color:#5E0000;
-    width: 100%;
-    color: white;
-    margin-bottom: 10px;  
+.store {
+  background: url(../img/fondoeCommerce.jpg);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
-//stile  purchase Summary
+.titleStore {
+  display: block;
+  visibility: hidden;
+}
+
+.eCommerce {
+  margin: auto;
+  width: 70%;
+  height: 1000px;
+}
+
+.titleBuy {
+  background-color: #5e0000;
+  width: 100%;
+  color: white;
+  margin-bottom: 10px;
+}
 
 .purchaseSummary {
-    float: right;
-    background-color:#5E0000;
-    width: 30%;
-    height: 150px;
-    padding: 15px;  
-}
-.purchaseSummary h5{
-font-size: 30px;
-color: white;
-}
-.purchaseSummary button{
-    color : #5E0000;
-}
-.cost{
-    float: right;
+  float: right;
+  background-color: #5e0000;
+  width: 30%;
+  height: 150px;
+  padding: 15px;
 }
 
-//card buy
-
-.cardBuy{
-     background-color:#C4C4C4;
-    width: 67%;
-    height: 100px;
-    margin-bottom: 10px;
-}
-.cardBuy h5{
-    font-size: 30px;
-    color: black;
-}
-.dropdown button{
-    color: black;
-    font-size: 30px;
-}
-.costDelete{
-    margin-left: 150px;
-}
-.titleBuy{
-    display: flex;
+.purchaseSummary h5 {
+  font-size: 30px;
+  color: white;
 }
 
-//wishlist
-.wishlist{
-    margin : auto;
-    width: 97%;
-    height: 1000px;
-    box-sizing: border-box;
+.purchaseSummary button {
+  color: #5e0000;
+}
+
+.cost {
+  float: right;
+}
+
+.cardBuy {
+  background-color: #c4c4c4;
+  width: 67%;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.cardBuy h5 {
+  font-size: 30px;
+  color: black;
+}
+
+.dropdown button {
+  color: black;
+  font-size: 30px;
+}
+
+.costDelete {
+  margin-left: 150px;
+}
+
+.titleBuy {
+  display: flex;
+}
+
+.wishlist {
+  margin: auto;
+  width: 97%;
+  height: 1000px;
+  box-sizing: border-box;
 }
 
 /*.cardFav{
@@ -263,41 +259,41 @@ color: white;
     height: auto;
     background-color:#C4C4C4;
 }*/
-.hederFavCard{
-    display: flex;
-    max-width: 25%;
-    height: auto;
-    background-color:#C4C4C4;
-    box-shadow: 1px 1px 4px 2px rgba(0,0,0,.2);
-    margin: 0px;
+
+.hederFavCard {
+  display: flex;
+  max-width: 25%;
+  height: auto;
+  background-color: #c4c4c4;
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.2);
+  margin: 0px;
 }
 
-.infoCard{
-    background-color: #5B284B;
-    width:50% ;
-    text-align: center;
-    color: white;
-    
+.infoCard {
+  background-color: #5e0000;
+  width: 50%;
+  text-align: center;
+  color: white;
 }
 
-.infoCard p{
-position: relative;
-display: block;
+.infoCard p {
+  position: relative;
+  display: block;
 }
 
- .imgCard{
-     width:50% ;
- }
-.imgCard img{
-    width: 100%;
-
+.imgCard {
+  width: 50%;
 }
 
-.errorMsg p{
-    color: red;
+.imgCard img {
+  width: 100%;
 }
 
-.errorMsg p::before {
+.errorMsg p {
+  color: #5e0000;
+}
+
+.errorMsg p:before {
   display: inline;
   content: "⚠ ";
 }
