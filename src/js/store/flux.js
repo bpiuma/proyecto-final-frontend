@@ -54,46 +54,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return JSON.parse(decodeURIComponent(escape(window.atob(claims))));
 			},
 
-			passRecovery: async data => {
-				var myHeaders = new Headers();
-				myHeaders.append("Content-Type", "application/json");
-
-				var raw = JSON.stringify(data);
-
-				var requestOptions = {
-					method: "POST",
-					headers: myHeaders,
-					body: raw,
-					redirect: "follow"
-				};
-
-				fetch(process.env.BACKEND_URL + "/passwordRecovery", requestOptions)
-					.then(response => response.json())
-					.then(result => console.log(result))
-					.catch(error => console.log("error", error));
-			},
-
-			newPass: async data => {
-				console.log(data);
-
-				// var myHeaders = new Headers();
-				// myHeaders.append("Content-Type", "application/json");
-
-				// var raw = JSON.stringify(data);
-
-				// var requestOptions = {
-				//     method: "POST",
-				//     headers: myHeaders,
-				//     body: raw,
-				//     redirect: "follow"
-				// };
-
-				// fetch(process.env.BACKEND_URL + "/passwordRecovery", requestOptions)
-				//     .then(response => response.json())
-				//     .then(result => console.log(result))
-				//     .catch(error => console.log("error", error));
-			},
-
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
