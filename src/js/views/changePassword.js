@@ -1,18 +1,18 @@
 import React from "react";
 import botellaVino from "../../img/botellaVino.png";
 import "../../styles/demo.scss";
-import { FormNewPassword } from "../component/formNewPassword";
+import { FormChangePassword } from "../component/formChangePassword";
 
-export const NewPassword = () => {
+export const ChangePassword = () => {
 	return (
 		<div className="newPass">
 			<div className="formcontainer">
 				<div className="red">
 					<img src={botellaVino} height="450" />
-					<h1 className="text">Password Recovery</h1>
+					<h1 className="text">Change Password</h1>
 				</div>
 				<div>
-					<FormNewPassword />
+					<FormChangePassword />
 				</div>
 			</div>
 		</div>

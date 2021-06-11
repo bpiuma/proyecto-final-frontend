@@ -11,6 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { ForgetPassword } from "./views/forgetPassword.js";
 import { NewPassword } from "./views/newPassword.js";
+import { ChangePassword } from "./views/changePassword.js";
 import { SignUp } from "./views/signUp";
 import { Store } from "./views/store";
 import { Gallery } from "./views/gallery";
@@ -45,6 +46,9 @@ const Layout = () => {
 						</Route>
 						<Route path="/newPassword">
 							<NewPassword />
+						</Route>
+						<Route path="/changePassword">
+							<ChangePassword />
 						</Route>
 						<Route exact path="/signUp">
 							<SignUp />
