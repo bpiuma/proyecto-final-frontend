@@ -56,10 +56,12 @@ export const FormSignUp = () => {
 				console.log(result);
 				if (result.message == "User created successfully") {
 					setAuth(true);
+					sessionStorage.setItem("userName", actions.parseJWT(result.token).newUser.first_name);
+					sessionStorage.setItem("token", result.token);
+					actions.setUser(actions.parseJWT(result.token).newUser.first_name, result.token);
 				} else {
 					setMsg(result.message);
 				}
-				//sessionStorage.setItem("message", result.message);
 			})
 			.catch(error => console.log("error", error));
 	};
@@ -216,9 +218,6 @@ export const FormSignUp = () => {
 
 			<div>{auth ? <Redirect to="/" /> : msg != "" ? <p className="alert alert-danger">{msg}</p> : ""}</div>
 
-			{/* <div className={store.userFailed ? "d-inline" : "d-none"}>
-				<p className="alert alert-danger">{store.userFailed ? store.userFailed : ""}</p>
-			</div> */}
 			<button type="submit" className="btn btnLogin float-right">
 				Register
 			</button>

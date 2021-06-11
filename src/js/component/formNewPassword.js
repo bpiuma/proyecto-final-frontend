@@ -20,10 +20,22 @@ export const FormNewPassword = () => {
 					type="password"
 					className="form-control bg-transparent border-0"
 					id="password"
-					{...register("password")}
+					{...register("password", {
+						required: true,
+						validate: value => validatePassword(value)
+					})}
 					placeholder="Please enter your new password"
-					required
 				/>
+				<div className="errorMsg">
+					{errors.password && errors.password.type === "required" && <p>This field is required</p>}
+					{errors.password &&
+						errors.password.type === "validate" && (
+							<p>
+								Password length between 8 to 20 characters, and at least 1 lower case, 1 upper case and
+								1 digit
+							</p>
+						)}
+				</div>
 			</div>
 			<button type="submit" className="btnLogin">
 				Submit
