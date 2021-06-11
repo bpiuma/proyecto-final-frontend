@@ -32,7 +32,10 @@ export const Navbar = () => {
 										{" "}
 										<p className="dropdown-item">Update Personal data</p>{" "}
 									</Link>
-									<p className="dropdown-item">Change Password</p>
+									<Link to="/changePassword">
+										{" "}
+										<p className="dropdown-item">Change Password</p>{" "}
+									</Link>
 									<Link to="/">
 										{" "}
 										<p
