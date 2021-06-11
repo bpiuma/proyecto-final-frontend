@@ -57,13 +57,6 @@ export const FormForgetPassword = () => {
 			<button type="submit" className="btnLogin">
 				Submit
 			</button>
-			{/* {auth ? (
-				<div className="msj mt-3">
-					<p>{Please check your mailbox}</p>
-				</div>
-			) : (
-				""
-			)} */}
 			<div className={auth ? "d-inline" : "d-none"}>
 				<p className="alert alert-danger mt-3">{msg}</p>
 			</div>
