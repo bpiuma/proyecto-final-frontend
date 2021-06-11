@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import copaVino from "../../img/copaVinoo.png";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+	const userName = sessionStorage.getItem("userName");
+
 	return (
 		<nav className="navbar navbar-light  ">
 			<Link to="/">
@@ -12,29 +16,54 @@ export const Navbar = () => {
 			</Link>
 			<div className="ml-auto">
 				<div className="btn-group">
-					<div className="btn-group dropleft" role="group">
-						<button
-							type="button"
-							className="btn btn-secondary dropdown-toggle dropdown-toggle-split border-0"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
-							<span className="sr-only">Toggle Dropleft</span>
-						</button>
-						<div className="dropdown-menu">
-							<Link to="/upData">
-								{" "}
-								<a className="dropdown-item">Update Personal data</a>{" "}
-							</Link>
-							<a className="dropdown-item">Change Password</a>
-							<a className="dropdown-item">Sign off</a>{" "}
+					{(store.userName != null && store.userName != undefined) || store.userName == "" ? (
+						<div className="d-flex">
+							<div className="btn-group dropleft" role="group">
+								<button
+									type="button"
+									className="btn btn-secondary dropdown-toggle dropdown-toggle-split border-0"
+									data-toggle="dropdown"
+									aria-haspopup="true"
+									aria-expanded="false">
+									<span className="sr-only">Toggle Dropleft</span>
+								</button>
+								<div className="dropdown-menu">
+									<Link to="/upData">
+										{" "}
+										<p className="dropdown-item">Update Personal data</p>{" "}
+									</Link>
+									<p className="dropdown-item">Change Password</p>
+									<Link to="/">
+										{" "}
+										<p
+											className="dropdown-item"
+											onClick={() => {
+												actions.logout(sessionStorage.getItem("token"));
+												sessionStorage.removeItem("token");
+												sessionStorage.removeItem("userName");
+												actions.setUser(null, null);
+											}}>
+											Logout
+										</p>{" "}
+									</Link>
+								</div>
+								<div className="d-flex align-items-center">
+									<i className="fas fa-user text-white  " />
+								</div>
+							</div>
+							<div
+								className="d-flex align-items-center ml-2 mr-2"
+								style={{ color: "white", fontSize: 20 + "px" }}>
+								Bienvenido, {userName}
+							</div>
 						</div>
-					</div>
-					<Link to="/login">
-						<button type="button" className="btn">
-							<i className="fas fa-user text-white  " /> Mi cuenta
-						</button>
-					</Link>
+					) : (
+						<Link to="/login">
+							<button type="button" className="btn">
+								Login
+							</button>
+						</Link>
+					)}
 				</div>
 				<Link to="/store">
 					<i className="fas fa-shopping-cart text-white ml-3 mr-3" />

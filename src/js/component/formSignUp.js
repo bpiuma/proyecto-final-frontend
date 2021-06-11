@@ -1,10 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
 
 export const FormSignUp = () => {
-	//const { store, actions } = useContext(Context);
+	const { store, actions } = useContext(Context);
 	const {
 		register,
 		handleSubmit,
@@ -54,7 +54,7 @@ export const FormSignUp = () => {
 			.then(response => response.json())
 			.then(result => {
 				console.log(result);
-				if (result.message == "" || result.message == undefined) {
+				if (result.message == "User created successfully") {
 					setAuth(true);
 				} else {
 					setMsg(result.message);
