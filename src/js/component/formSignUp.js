@@ -219,8 +219,8 @@ export const FormSignUp = () => {
 			{/* <div className={store.userFailed ? "d-inline" : "d-none"}>
 				<p className="alert alert-danger">{store.userFailed ? store.userFailed : ""}</p>
 			</div> */}
-			<button type="submit" className="btnLogin">
-				Sign Up
+			<button type="submit" className="btn btnLogin float-right">
+				Register
 			</button>
 		</form>
 	);
