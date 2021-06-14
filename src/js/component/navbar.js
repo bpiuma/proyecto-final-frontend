@@ -57,7 +57,7 @@ export const Navbar = () => {
 							<div
 								className="d-flex align-items-center ml-2 mr-2"
 								style={{ color: "white", fontSize: 20 + "px" }}>
-								Bienvenido, {userName}
+								Welcome, {userName}
 							</div>
 						</div>
 					) : (

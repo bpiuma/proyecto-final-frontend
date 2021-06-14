@@ -38,6 +38,9 @@ export const FormNewPassword = () => {
 
 	//obtenemos los datos del usuario
 	let user = actions.parseJWT(newToken).user;
+	if (!user) {
+		user = actions.parseJWT(newToken).newUser;
+	}
 
 	const changePass = async data => {
 		var myHeaders = new Headers();
@@ -48,8 +51,6 @@ export const FormNewPassword = () => {
 			oldPassword: user.password,
 			newPassword: data.newPassword
 		});
-
-		console.log(user.password);
 
 		var requestOptions = {
 			method: "PUT",
