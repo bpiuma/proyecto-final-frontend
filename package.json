@@ -87,6 +87,8 @@
 		"react-polyfills": "0.0.1",
 		"react-render-html": "^0.6.0",
 		"react-router-dom": "^5.2.0",
-		"react-slick": "^0.28.1"
+		"react-slick": "^0.28.1",
+		"sweetalert2": "^11.0.17",
+		"sweetalert2-react-content": "^4.0.1"
 	}
 }

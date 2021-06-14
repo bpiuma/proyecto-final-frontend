@@ -4,6 +4,9 @@ import { Context } from "../store/appContext";
 import "../../styles/productGallery.scss";
 import Slider from "react-slick";
 import renderHTML from "react-render-html";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 export const Products = () => {
 	const { store, actions } = useContext(Context);
 	const starts = points => {
@@ -63,21 +66,47 @@ export const Products = () => {
 		}
 		return html;
 	};
-
+	const user = store.token ? actions.parseJWT(store.token).user : "User Not Logged in";
 	const styles = {
 		maxwidth: "18rem"
 	};
+	const Message = Swal.mixin({
+		toast: true,
+		position: "top-end",
+		showConfirmButton: false,
+		timer: 3000,
+		timerProgressBar: true,
+		didOpen: toast => {
+			toast.addEventListener("mouseenter", Swal.stopTimer);
+			toast.addEventListener("mouseleave", Swal.resumeTimer);
+		}
+	});
+
+	const addToCart = (user, productid) => {
+		if (user.id) {
+			Message.fire({
+				icon: "success",
+				title: "Product added successfully to cart."
+			});
+		} else {
+			Message.fire({
+				icon: "warning",
+				title: "You must log in to add products to the cart"
+			});
+		}
+	};
+
 	const settings = {
-		/*dots: false,
+		dots: false,
 		arrows: true,
 		slidesToShow: 3,
-        infinite: false,*/
-		className: "center",
+		infinite: false,
+		/*className: "center",
 		centerMode: true,
 		infinite: true,
 		centerPadding: "60px",
 		slidesToShow: 3,
-		speed: 500,
+		speed: 500,*/
 		responsive: [
 			{
 				breakpoint: 1024,
@@ -114,17 +143,13 @@ export const Products = () => {
 							? store.products.map((item, index) => (
 									<div key={`${index}`} className="container-fluid d-flex justify-content-center">
 										<div className="row mt-5">
-											<div className="col-sm-4">
+											<div className="col-sm-4 py-2">
 												<div className="card h-100">
-													<img
-														src="https://imgur.com/edOjtEC.png"
-														className="card-img-top"
-														width="100%"
-													/>
+													<img src={item.image} className="card-img-top" />
 													<div className="badge">
 														<button
 															type="button"
-															className="btn btn-outline-danger btn-sm"
+															className="btn btn-danger btn-sm"
 															onClick={""}>
 															<i className="fa fa-heart-o heart" aria-hidden="true" />
 														</button>
@@ -151,7 +176,7 @@ export const Products = () => {
 																		height="25px"
 																	/>
 																	<div className="d-flex flex-column ml-1">
-																		<small className="ghj">{item.variety}</small>
+																		<h6 className="ml-1">{item.variety}</h6>
 																	</div>
 																</div>
 															</div>
@@ -163,7 +188,9 @@ export const Products = () => {
 																		width="35px"
 																		height="25px"
 																	/>
-																	<h6 className="ml-1">{item.winery}</h6>
+																	<div className="d-flex flex-column ml-1">
+																		<h6 className="ml-1">{item.winery}</h6>
+																	</div>
 																</div>
 															</div>
 														</div>
@@ -189,7 +216,11 @@ export const Products = () => {
 															</div>
 														</small>
 														<div className="mx-3 mt-3 mb-2">
-															<button type="button" className="btn btn-danger btn-block">
+															<button
+																type="button"
+																id="addToCart"
+																className="btn btn-danger btn-block"
+																onClick={() => addToCart(user, item.id)}>
 																<small>ADD TO CART</small>
 															</button>
 														</div>
