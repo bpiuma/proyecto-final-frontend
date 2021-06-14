@@ -68,16 +68,16 @@ export const Products = () => {
 		maxwidth: "18rem"
 	};
 	const settings = {
-		/*dots: false,
+		dots: false,
 		arrows: true,
 		slidesToShow: 3,
-        infinite: false,*/
-		className: "center",
+		infinite: false,
+		/*className: "center",
 		centerMode: true,
 		infinite: true,
 		centerPadding: "60px",
 		slidesToShow: 3,
-		speed: 500,
+		speed: 500,*/
 		responsive: [
 			{
 				breakpoint: 1024,
@@ -114,17 +114,13 @@ export const Products = () => {
 							? store.products.map((item, index) => (
 									<div key={`${index}`} className="container-fluid d-flex justify-content-center">
 										<div className="row mt-5">
-											<div className="col-sm-4">
-												<div className="card h-100">
-													<img
-														src="https://imgur.com/edOjtEC.png"
-														className="card-img-top"
-														width="100%"
-													/>
+											<div className="col-sm-4 py-2">
+												<div className="card card-body h-100">
+													<img src={item.image} className="card-img-top" />
 													<div className="badge">
 														<button
 															type="button"
-															className="btn btn-outline-danger btn-sm"
+															className="btn btn-danger btn-sm"
 															onClick={""}>
 															<i className="fa fa-heart-o heart" aria-hidden="true" />
 														</button>
@@ -151,7 +147,7 @@ export const Products = () => {
 																		height="25px"
 																	/>
 																	<div className="d-flex flex-column ml-1">
-																		<small className="ghj">{item.variety}</small>
+																		<h6 className="ml-1">{item.variety}</h6>
 																	</div>
 																</div>
 															</div>
@@ -163,7 +159,9 @@ export const Products = () => {
 																		width="35px"
 																		height="25px"
 																	/>
-																	<h6 className="ml-1">{item.winery}</h6>
+																	<div className="d-flex flex-column ml-1">
+																		<h6 className="ml-1">{item.winery}</h6>
+																	</div>
 																</div>
 															</div>
 														</div>

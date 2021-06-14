@@ -58,7 +58,10 @@ p {
 	}
 	.card-img-top {
 		border-top-right-radius: 10px;
-		border-top-left-radius: 10px;
+        border-top-left-radius: 10px;
+         width: 100%;
+        height: 150px;
+        object-fit: cover;
 	}
 	.card:hover {
 		transform: scale(1.1);
@@ -69,7 +72,7 @@ p {
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
+        -webkit-box-orient: vertical;        
 	}
 	small.text-muted {
 		font-size: 12px
@@ -88,7 +91,7 @@ p {
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
+        -webkit-box-orient: vertical;        
 	}
 	small.key {
 		text-decoration: none;
