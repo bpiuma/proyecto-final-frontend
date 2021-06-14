@@ -7,10 +7,9 @@ import { Navbar } from "../component/navbar.js";
 
 export const Gallery = () => {
 	const { store, actions } = useContext(Context);
-
 	return (
-		<div className="scrolling-wrapper row flex-row flex-nowrap pb-4 pt-2 overflow-auto">
+		<>
 			<Products />
-		</div>
+		</>
 	);
 };
