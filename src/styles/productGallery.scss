@@ -1,0 +1,138 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+body {
+	font-family: 'Roboto', sans-serif
+}
+
+header {
+	display: grid;
+	place-items: center;
+}
+
+h1 {
+	font-weight: 300 !important;
+	font-size: 3.5em !important;
+	color: white !important;
+}
+
+p {
+	font-family: sans-serif !important;
+	font-weight: 300 !important;
+	line-height: 1.42 !important;
+	color: white !important;
+}
+
+.card-slider {
+	max-width: 960px;
+	margin: 0 auto;
+	@media screen and (max-width: 1024px) {
+		width: 80%;
+	}
+	.slick-prev-icon,
+	.slick-next-icon {
+		color: black;
+	}
+	.slick-slide {
+		padding: 0 10px;
+	}
+	.card .badge {
+		position: absolute;
+		top: 2px;
+		right: 2px;
+		z-index: 1;
+		padding: 5px 10px;
+		font-size: 12px;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: white;
+	}
+	.heart {
+		color: white !important;
+	}
+	.card {
+		width: 250px;
+		border-radius: 10px;
+		background: #F5F1EE;
+		color: #212529;
+	}
+	.card-img-top {
+		border-top-right-radius: 10px;
+		border-top-left-radius: 10px;
+	}
+	.card:hover {
+		transform: scale(1.1);
+		/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+	}
+	span.text-muted {
+		font-size: 12px;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+	small.text-muted {
+		font-size: 12px
+	}
+	h5.mb-0 {
+		font-size: 1rem
+	}
+	small.ghj {
+		font-size: 9px
+	}
+	.mid {
+		background: #ECEDF1
+	}
+	h6.ml-1 {
+		font-size: 13px;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+	small.key {
+		text-decoration: none;
+		font-size: 10px;
+	}
+	.btn-danger {
+		color: #FFCBD2 !important;
+		background-color: #5e0000 !important;
+	}
+	.btn-danger:focus {
+		box-shadow: none
+	}
+	small.justify-content-center {
+		font-size: 9px;
+		cursor: pointer;
+		text-decoration: underline
+	}
+	@media screen and (max-width:600px) {
+		.col-sm-4 {
+			margin-bottom: 50px
+		}
+    }
+
+    /** Rating */
+    .card .rating {
+      margin: 10px 0 15px 10px;
+      color: orange;
+      font-size: 12px;
+    }
+    /** "30 reviews" link next to stars */
+      .card .rating .reviews-link {
+        color: rgba(0,0,0,.6);
+        margin-left: 5px;
+      }
+
+    .card .rating .reviews-link:hover {
+        color: black;
+    }
+
+    .card .rating .reviews-link:focus {
+        color: royalblue;
+        outline: 3px dotted royalblue;
+        outline-offset: 2px;
+    }
+
+}
+
