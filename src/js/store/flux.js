@@ -53,7 +53,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				var claims = segments[1];
 				return JSON.parse(decodeURIComponent(escape(window.atob(claims))));
 			},
-
 			passRecovery: async data => {
 				var myHeaders = new Headers();
 				myHeaders.append("Content-Type", "application/json");
