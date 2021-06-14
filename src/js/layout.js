@@ -12,6 +12,7 @@ import { Footer } from "./component/footer";
 import { ForgetPassword } from "./views/forgetPassword.js";
 import { NewPassword } from "./views/newPassword.js";
 import { ChangePassword } from "./views/changePassword.js";
+import { ActivateUser } from "./views/activateUser.js";
 import { SignUp } from "./views/signUp";
 import { Store } from "./views/store";
 import { Gallery } from "./views/gallery";
@@ -46,6 +47,9 @@ const Layout = () => {
 						</Route>
 						<Route path="/newPassword/:token">
 							<NewPassword />
+						</Route>
+						<Route path="/activateUser/:token">
+							<ActivateUser />
 						</Route>
 						<Route path="/changePassword">
 							<ChangePassword />
