@@ -23,6 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				fetchProductsData();
 			},
+			addToCart: (userId, productId) => {},
 			logout: async token => {
 				var myHeaders = new Headers();
 				myHeaders.append("Authorization", token);
