@@ -129,20 +129,25 @@ export const Wishlist = () => {
 			<div className="container-fluid py-2">
 				<header>
 					<div className="text-center">
-						<h1>Your favourites wines</h1>
-						<p>👇 Scroll left or right to see all your favorite wines.</p>
+						<h1 className="text-dark">Your favourites wines</h1>
+						<p className="text-dark">👇 Scroll left or right to see all your favorite wines.</p>
 					</div>
 				</header>
-				<div className="card-slider">
-					<Slider {...settings}>
-						{store.favorites
-							? store.favorites.map((item, index) => (
-									<div key={`${index}`} className="container-fluid d-flex justify-content-center">
-										<div className="row mt-5">
-											<div className="col-sm-4 py-2">
-												<div className="card h-100">
-													<img src={item.product.image} className="card-img-top" />
-													{/* <div className="badge">
+				{store.favorites.message == "User does not have favorite products" ? (
+					<div className="text-center" style={{ height: "400px" }}>
+						<h5 className="mt-5 text-dark">You have not added any favorites yet</h5>
+					</div>
+				) : (
+					<div className="card-slider">
+						<Slider {...settings}>
+							{store.favorites
+								? store.favorites.map((item, index) => (
+										<div key={`${index}`} className="container-fluid d-flex justify-content-center">
+											<div className="row mt-5">
+												<div className="col-sm-4 py-2">
+													<div className="card h-100">
+														<img src={item.product.image} className="card-img-top" />
+														{/* <div className="badge">
 														<button
 															type="button"
 															className="btn btn-danger btn-sm"
@@ -150,85 +155,94 @@ export const Wishlist = () => {
 															<i className="fa fa-heart-o heart" aria-hidden="true" />
 														</button>
 													</div> */}
-													<div className="card-body pt-0 px-0">
-														<div className="d-flex flex-row justify-content-between mb-0 px-3">
-															{" "}
-															<small className="text-muted mt-1">Price:</small>
-															<h6>USD {item.product.price}</h6>
-														</div>
-														<hr className="mt-2 mx-3" />
-														<div className="d-flex flex-row justify-content-between px-3 pb-4">
-															<div className="d-flex flex-column">
-																<span className="text-muted">{item.product.title}</span>
+														<div className="card-body pt-0 px-0">
+															<div className="d-flex flex-row justify-content-between mb-0 px-3">
+																{" "}
+																<small className="text-muted mt-1">Price:</small>
+																<h6>USD {item.product.price}</h6>
 															</div>
-														</div>
-														<div className="d-flex flex-row justify-content-between p-3 mid">
-															<div className="d-flex flex-column">
-																<small className="text-muted mb-1">Variety</small>
-																<div className="d-flex flex-row">
-																	<img
-																		src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Grapes_icon.svg"
-																		width="35px"
-																		height="25px"
-																	/>
-																	<div className="d-flex flex-column ml-1">
-																		<h6 className="ml-1">{item.product.variety}</h6>
+															<hr className="mt-2 mx-3" />
+															<div className="d-flex flex-row justify-content-between px-3 pb-4">
+																<div className="d-flex flex-column">
+																	<span className="text-muted">
+																		{item.product.title}
+																	</span>
+																</div>
+															</div>
+															<div className="d-flex flex-row justify-content-between p-3 mid">
+																<div className="d-flex flex-column">
+																	<small className="text-muted mb-1">Variety</small>
+																	<div className="d-flex flex-row">
+																		<img
+																			src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Grapes_icon.svg"
+																			width="35px"
+																			height="25px"
+																		/>
+																		<div className="d-flex flex-column ml-1">
+																			<h6 className="ml-1">
+																				{item.product.variety}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+																<div className="d-flex flex-column">
+																	<small className="text-muted mb-2">Winery</small>
+																	<div className="d-flex flex-row">
+																		<img
+																			src="https://www.pinclipart.com/picdir/big/68-680488_gareoult-cotignac-hyres-wednesday-vineyard-icon-png.png"
+																			width="35px"
+																			height="25px"
+																		/>
+																		<div className="d-flex flex-column ml-1">
+																			<h6 className="ml-1">
+																				{item.product.winery}
+																			</h6>
+																		</div>
 																	</div>
 																</div>
 															</div>
-															<div className="d-flex flex-column">
-																<small className="text-muted mb-2">Winery</small>
-																<div className="d-flex flex-row">
-																	<img
-																		src="https://www.pinclipart.com/picdir/big/68-680488_gareoult-cotignac-hyres-wednesday-vineyard-icon-png.png"
-																		width="35px"
-																		height="25px"
-																	/>
-																	<div className="d-flex flex-column ml-1">
-																		<h6 className="ml-1">{item.product.winery}</h6>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<small className="text-muted key pl-3">
-															Rating: {starts(item.product.points)} out of 5 stars
-															<div className="rating">
-																{renderHTML(startsPoints(starts(item.product.points)))}
+															<small className="text-muted key pl-3">
+																Rating: {starts(item.product.points)} out of 5 stars
+																<div className="rating">
+																	{renderHTML(
+																		startsPoints(starts(item.product.points))
+																	)}
 
-																<br />
-																<Link
-																	to={
-																		"https://twitter.com/" +
-																		item.product.taster_twitter_handle
-																	}
-																	className="reviews-link">
-																	Reviewer: {item.product.taster_name} <br />
-																	<i
-																		className="fa fa-twitter"
-																		aria-hidden="true"
-																	/>{" "}
-																	{item.product.taster_twitter_handle}
-																</Link>
+																	<br />
+																	<Link
+																		to={
+																			"https://twitter.com/" +
+																			item.product.taster_twitter_handle
+																		}
+																		className="reviews-link">
+																		Reviewer: {item.product.taster_name} <br />
+																		<i
+																			className="fa fa-twitter"
+																			aria-hidden="true"
+																		/>{" "}
+																		{item.product.taster_twitter_handle}
+																	</Link>
+																</div>
+															</small>
+															<div className="mx-3 mt-3 mb-2">
+																<button
+																	type="button"
+																	id="addToCart"
+																	className="btn btn-danger btn-block"
+																	onClick={() => addToCart(user, item.id)}>
+																	<small>ADD TO CART</small>
+																</button>
 															</div>
-														</small>
-														<div className="mx-3 mt-3 mb-2">
-															<button
-																type="button"
-																id="addToCart"
-																className="btn btn-danger btn-block"
-																onClick={() => addToCart(user, item.id)}>
-																<small>ADD TO CART</small>
-															</button>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-							  ))
-							: "Loading..."}
-					</Slider>
-				</div>
+								  ))
+								: "Loading..."}
+						</Slider>
+					</div>
+				)}
 			</div>
 		</>
 	);
