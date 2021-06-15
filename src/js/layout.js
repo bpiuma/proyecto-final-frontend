@@ -18,6 +18,7 @@ import { Store } from "./views/store";
 import { Gallery } from "./views/gallery";
 import { UpData } from "./views/upData";
 import { Favourite } from "./views/favourite";
+import { Pdetails } from "./views/pdetails";
 import { Contact } from "./views/contact";
 
 //create your first component
@@ -68,8 +69,8 @@ const Layout = () => {
 						<Route exact path="/store">
 							<Store />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/pdetails/:productid">
+							<Pdetails />
 						</Route>
 						<Route exact path="/gallery">
 							<Gallery />

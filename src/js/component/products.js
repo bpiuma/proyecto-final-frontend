@@ -6,9 +6,10 @@ import Slider from "react-slick";
 import renderHTML from "react-render-html";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-
+import { ExternalLink } from "react-external-link";
 export const Products = () => {
 	const { store, actions } = useContext(Context);
+
 	const starts = points => {
 		return points > 0 && points <= 20
 			? 1
@@ -84,9 +85,10 @@ export const Products = () => {
 
 	const addToCart = (user, productid) => {
 		if (user.id) {
+			const data = actions.addToCart(user.id, productid);
 			Message.fire({
 				icon: "success",
-				title: "Product added successfully to cart."
+				title: data ? data : sessionStorage.getItem("messageCart")
 			});
 		} else {
 			Message.fire({
@@ -154,6 +156,13 @@ export const Products = () => {
 															<i className="fa fa-heart-o heart" aria-hidden="true" />
 														</button>
 													</div>
+													<div className="preview">
+														<Link
+															to={"/pdetails/" + item.id}
+															className="btn btn-danger btn-sm">
+															<i className="fa fa-search" aria-hidden="true" />
+														</Link>
+													</div>
 													<div className="card-body pt-0 px-0">
 														<div className="d-flex flex-row justify-content-between mb-0 px-3">
 															{" "}
@@ -200,8 +209,8 @@ export const Products = () => {
 																{renderHTML(startsPoints(starts(item.points)))}
 
 																<br />
-																<Link
-																	to={
+																<ExternalLink
+																	href={
 																		"https://twitter.com/" +
 																		item.taster_twitter_handle
 																	}
@@ -212,13 +221,12 @@ export const Products = () => {
 																		aria-hidden="true"
 																	/>{" "}
 																	{item.taster_twitter_handle}
-																</Link>
+																</ExternalLink>
 															</div>
 														</small>
 														<div className="mx-3 mt-3 mb-2">
 															<button
 																type="button"
-																id="addToCart"
 																className="btn btn-danger btn-block"
 																onClick={() => addToCart(user, item.id)}>
 																<small>ADD TO CART</small>

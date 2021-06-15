@@ -23,6 +23,9 @@ p {
 	color: white !important;
 }
 
+a {
+    text-decoration: none;
+}
 .card-slider {
 	max-width: 960px;
 	margin: 0 auto;
@@ -46,7 +49,21 @@ p {
 		font-weight: bold;
 		text-transform: uppercase;
 		color: white;
-	}
+    }
+    
+    .card .preview {
+		position: absolute;
+		top: 42px;
+		right: 2px;
+		z-index: 2;
+		padding: 5px 10px;
+		font-size: 12px;
+		font-weight: bold;
+		text-transform: uppercase;
+        color: white;        
+    }
+    
+
 	.heart {
 		color: white !important;
 	}
@@ -63,8 +80,8 @@ p {
         height: 150px;
         object-fit: cover;
 	}
-	.card:hover {
-		transform: scale(1.1);
+	.card:hover {        
+        transform: scale(1.1);                
 		/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 	}
 	span.text-muted {

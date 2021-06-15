@@ -83,11 +83,13 @@
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-dom": "^16.8.4",
+		"react-external-link": "^1.2.1",
 		"react-hook-form": "^7.8.1",
 		"react-polyfills": "0.0.1",
 		"react-render-html": "^0.6.0",
 		"react-router-dom": "^5.2.0",
 		"react-slick": "^0.28.1",
+		"striptags": "^3.1.1",
 		"sweetalert2": "^11.0.17",
 		"sweetalert2-react-content": "^4.0.1"
 	}

@@ -1,9 +1,14 @@
+import { set } from "react-hook-form";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			userName: sessionStorage.getItem("userName") ? sessionStorage.getItem("userName") : null,
 			token: sessionStorage.getItem("token") ? sessionStorage.getItem("token") : null,
 			products: [],
+			favorites: [],
+			productDetails: {},
+			messageCart: sessionStorage.getItem("messageCart") ? sessionStorage.getItem("messageCart") : null
 			favorites: null
 		},
 		actions: {
@@ -14,10 +19,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ favorites: favs });
 			},
 			loadData: () => {
-				const baseURL = "https://3001-indigo-catfish-h5cpn5a9.ws-us09.gitpod.io/";
 				const fetchProductsData = async () => {
 					try {
-						const response = await fetch(baseURL + "products");
+						const response = await fetch(process.env.BACKEND_URL + "/products");
 						const responseJson = await response.json();
 						setStore({ products: responseJson.results });
 					} catch (e) {
@@ -27,8 +31,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetchProductsData();
 				if (getStore().token != null) getActions().getUserFavs();
 			},
-			addToCart: (userId, productId) => {},
+			loadProductDetails: productid => {
+				const fetchProductData = async () => {
+					try {
+						const response = await fetch(process.env.BACKEND_URL + "/products/" + productid);
+						const responseJson = await response.json();
+						//console.log(responseJson.results);
+						setStore({ productDetails: responseJson.results });
+					} catch (e) {
+						console.error(e);
+					}
+				};
+				fetchProductData();
+				return () => console.log("loading in productDetails...");
+			},
+			addToCart: (userid, productid) => {
+				let myHeaders = new Headers();
+				const store = getStore();
+				myHeaders.append("Authorization", store.token);
+				myHeaders.append("Content-Type", "application/json");
+				let msg;
+				let raw = JSON.stringify({
+					cant: 1
+				});
 
+				let requestOptions = {
+					method: "POST",
+					headers: myHeaders,
+					body: raw,
+					redirect: "follow"
+				};
+				const fetchData = async () => {
+					try {
+						const response = await fetch(
+							process.env.BACKEND_URL + "/" + userid + "/product/" + productid,
+							requestOptions
+						);
+						const responseJson = await response.json();
+						console.log(responseJson.message);
+						sessionStorage.setItem("messageCart", responseJson.message);
+						setStore({ messageCart: responseJson.message });
+					} catch (e) {
+						console.error(e);
+					}
+				};
+				fetchData();
+				return store.messageCart;
+			},
+			addToCart: (userId, productId) => {},
 			getUserFavs: async () => {
 				var myHeaders = new Headers();
 				myHeaders.append("Authorization", getStore().token);
@@ -45,7 +95,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log("error", error));
 			},
-
 			logout: async token => {
 				var myHeaders = new Headers();
 				myHeaders.append("Authorization", token);
