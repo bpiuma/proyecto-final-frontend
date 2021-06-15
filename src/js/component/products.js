@@ -130,9 +130,9 @@ export const Products = () => {
 	};
 	return (
 		<>
-			<div className=" container-fluid py-2">
+			<div className="container-fluid py-2">
 				<header>
-					<div>
+					<div className="text-center">
 						<h1>Products</h1>
 						<p>👇 Scroll left or right to see all offer wines.</p>
 					</div>

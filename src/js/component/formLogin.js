@@ -35,6 +35,7 @@ export const FormLogin = () => {
 					sessionStorage.setItem("userName", actions.parseJWT(result.token).user.first_name);
 					sessionStorage.setItem("token", result.token);
 					actions.setUser(actions.parseJWT(result.token).user.first_name, result.token);
+					actions.getUserFavs();
 				} else {
 					setMsg(result.message);
 				}
