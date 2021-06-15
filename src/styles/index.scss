@@ -10,6 +10,11 @@ body {
   background-color: #5e0000;
 }
 
+//drdropdown
+.dropdown-item{
+    color:#5e0000 !important;
+}
+
 .user {
   margin-left: 500px;
 }
@@ -23,7 +28,7 @@ body {
 }
 
 .login {
-  //background: url(../img/fondoUser.jpg);
+  background: url(../img/fondoUser.jpg);
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
@@ -32,10 +37,16 @@ body {
 
 .red {
   width: 250px;
-  height: 500px;
+  height: 550px;
   background-color: #5e0000;
   padding-top: 25px;
   padding-left: 25px;
+}
+/*.textForgetSignUp h1{
+    font-size: 9px;}*/
+.textForgetSignUp h1{
+    font-size: 25px !important;
+    color: #5e0000 !important;
 }
 
 .text {
@@ -58,7 +69,7 @@ body {
 }
 
 .formLogin {
-  height: 500px;
+  height: 550px;
   background: #c4c4c4;
   width: 250px;
   font-size: 25px;
@@ -86,9 +97,10 @@ body {
   font-size: 25px;
   margin-top: 15px;
 }
+//forget paswword
 
 .forget {
-  //background: url(../img/fondoUser.jpg);
+  background: url(../img/fondoUser.jpg);
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
@@ -98,8 +110,8 @@ body {
 .forget h1 {
   font-style: normal;
   font-weight: normal;
-  font-size: 40px;
-  line-height: 113px;
+  font-size: 35px !important;
+  line-height: 50px;
   color: #ffffff;
   position: relative;
   bottom: 50%;
@@ -126,7 +138,7 @@ body {
 }
 
 .signup {
- //background: url(../img/fondoUser.jpg);
+ background: url(../img/fondoUser.jpg);
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
@@ -248,11 +260,6 @@ body {
   box-sizing: border-box;
 }
 
-/*.cardFav{
-    max-width: 25%;
-    height: auto;
-    background-color:#C4C4C4;
-}*/
 
 .hederFavCard {
   display: flex;
@@ -290,4 +297,31 @@ body {
 .errorMsg p:before {
   display: inline;
   content: "⚠ ";
+  color: #5e0000;   //agrego lu 15/06
 }
+.errorMsg p {
+    color: #5e0000 !important; //agrego lu 15/06
+}
+//contact
+.contact {
+ background: url(../img/fondoUser.jpg);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+//galery
+.gallery {
+  background: url(../img/fondoGaleria.jpg);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+//newpassword
+.newPass{
+    font-size: 10px !important;
+}
+
+//formActevateUser

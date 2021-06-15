@@ -75,7 +75,8 @@ export const FormLogin = () => {
 					placeholder="Please enter your password"
 				/>
 				<div className="errorMsg">
-					{errors.password && errors.password.type === "required" && <p>This field is required</p>}
+					{errors.password &&
+						errors.password.type === "required" && <p className="small">This field is required</p>}
 				</div>
 			</div>
 
@@ -84,12 +85,14 @@ export const FormLogin = () => {
 			<button type="submit" className="btnLogin">
 				Login
 			</button>
-			<Link to="/forgetPassword">
-				<h1>Forget Password</h1>
-			</Link>
-			<Link to="/signUp">
-				<h1>Sign Up</h1>
-			</Link>
+			<div className="textForgetSignUp">
+				<Link to="/forgetPassword">
+					<h1>Forget Password</h1>
+				</Link>
+				<Link to="/signUp">
+					<h1>Sign Up</h1>
+				</Link>
+			</div>
 		</form>
 	);
 };
