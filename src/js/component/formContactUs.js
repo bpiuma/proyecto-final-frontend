@@ -6,10 +6,6 @@ import { Context } from "../store/appContext";
 export const FormContactUs = () => {
 	const { store, actions } = useContext(Context);
 
-	// funcion para validar el formato del email
-
-	// funcion para validar el formato del password
-
 	return (
 		<form className="formSign">
 			<div className="form-group">
