@@ -9,10 +9,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: [],
 			productDetails: {},
 			messageCart: sessionStorage.getItem("messageCart") ? sessionStorage.getItem("messageCart") : null
+			favorites: null
 		},
 		actions: {
 			setUser: (username, tok) => {
 				setStore({ userName: username, token: tok });
+			},
+			setFavorites: favs => {
+				setStore({ favorites: favs });
 			},
 			loadData: () => {
 				const fetchProductsData = async () => {
@@ -25,6 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 				fetchProductsData();
+				if (getStore().token != null) getActions().getUserFavs();
 			},
 			loadProductDetails: productid => {
 				const fetchProductData = async () => {
@@ -73,6 +78,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetchData();
 				return store.messageCart;
 			},
+			addToCart: (userId, productId) => {},
+			getUserFavs: async () => {
+				var myHeaders = new Headers();
+				myHeaders.append("Authorization", getStore().token);
+				var requestOptions = {
+					method: "GET",
+					headers: myHeaders,
+					redirect: "follow"
+				};
+				let userId = getActions().parseJWT(getStore().token).user.id;
+				fetch(process.env.BACKEND_URL + "/favorite/user/" + userId, requestOptions)
+					.then(response => response.json())
+					.then(result => {
+						setStore({ favorites: result });
+					})
+					.catch(error => console.log("error", error));
+			},
 			logout: async token => {
 				var myHeaders = new Headers();
 				myHeaders.append("Authorization", token);
@@ -91,7 +113,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch(process.env.BACKEND_URL + "/logout", requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					.then(result => {
+						console.log(result);
+					})
 					.catch(error => console.log("error", error));
 			},
 
@@ -120,27 +144,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
-			},
-
-			newPass: async data => {
-				console.log(data);
-
-				// var myHeaders = new Headers();
-				// myHeaders.append("Content-Type", "application/json");
-
-				// var raw = JSON.stringify(data);
-
-				// var requestOptions = {
-				//     method: "POST",
-				//     headers: myHeaders,
-				//     body: raw,
-				//     redirect: "follow"
-				// };
-
-				// fetch(process.env.BACKEND_URL + "/passwordRecovery", requestOptions)
-				//     .then(response => response.json())
-				//     .then(result => console.log(result))
-				//     .catch(error => console.log("error", error));
 			}
 		}
 	};
