@@ -21,7 +21,7 @@ export const Navbar = () => {
 							<div className="btn-group dropleft" role="group">
 								<button
 									type="button"
-									className="btn btn-secondary dropdown-toggle dropdown-toggle-split border-0"
+									className="btn text-white  dropdown-toggle dropdown-toggle-split border-0"
 									data-toggle="dropdown"
 									aria-haspopup="true"
 									aria-expanded="false">
@@ -62,7 +62,7 @@ export const Navbar = () => {
 						</div>
 					) : (
 						<Link to="/login">
-							<button type="button" className="btn">
+							<button type="button" className="btn text-white">
 								Login
 							</button>
 						</Link>
@@ -72,7 +72,7 @@ export const Navbar = () => {
 					<i className="fas fa-shopping-cart text-white ml-3 mr-3" />
 				</Link>
 				<Link to="/favourite">
-					<i className="far herart fa-heart ml-3 mr-3" />
+					<i className="far herart fa-heart ml-3 mr-3 text-white" />
 				</Link>
 			</div>
 		</nav>

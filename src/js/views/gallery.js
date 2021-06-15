@@ -8,8 +8,8 @@ import { Navbar } from "../component/navbar.js";
 export const Gallery = () => {
 	const { store, actions } = useContext(Context);
 	return (
-		<>
+		<div className="gallery">
 			<Products />
-		</>
+		</div>
 	);
 };

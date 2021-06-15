@@ -1,23 +1,28 @@
 import React, { Component } from "react";
 import "../../styles/footer.scss";
+import logo from "../../img/copaVino.png";
 
 export const Footer = () => {
 	return (
-		<footer className="footer fixed-bottom mt-auto text-center">
-			<div className="page-footer text-center py-3">
-				<div className="logo">
-					<a href="https://www.instagram.com/wine/?hl=es" target="_blank" rel="noopener noreferrer">
-						<i className="fab fa-instagram" />
+		<footer className="  text-white">
+			<div className="continer">
+				<nav className="row">
+					<a href="#" className="col-6 text-reset  d-flex align-items-center">
+						<img src={logo} className="img-logo mr-1" width="15" />
+						Wine Sensens
 					</a>
-					<div className="espacio" />
-					<a href="https://www.instagram.com/wine/?hl=es" target="_blank" rel="noopener noreferrer">
-						<i className="fab fa-facebook" />
-					</a>
-					<div className="espacio" />
-					<a href="https://www.instagram.com/wine/?hl=es" target="_blank" rel="noopener noreferrer">
-						<i className="far fa-comments" />
-					</a>
-				</div>
+					<div className="col-6 ext-reset d-flex justify-content-end ">
+						<a href="#" className="mr-2 text-white">
+							<i className="fab fa-facebook-square" />
+						</a>
+						<a href="#" className="mr-2 text-white">
+							<i className="fab fa-instagram-square" />
+						</a>
+						<a href="#" className="mr-2 text-white">
+							<i className="fab fa-twitter-square" />
+						</a>
+					</div>
+				</nav>
 			</div>
 		</footer>
 	);

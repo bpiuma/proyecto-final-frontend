@@ -4,20 +4,19 @@ import botellaVino from "../../img/botellaVino.png";
 import { Context } from "../store/appContext";
 import "../../styles/demo.scss";
 import { Navbar } from "../component/navbar.js";
-import { FormForgetPassword } from "../component/formForgetPassword";
 
-export const ForgetPassword = () => {
-	const { store, actions } = useContext(Context);
+import { FormContactUs } from "../component/formContactUs";
 
+export const Contact = () => {
 	return (
-		<div className="forget">
-			<div className="formcontainer">
-				<div className="red">
-					<img src={botellaVino} height="450" />
-					<h1 className>Forgot Password</h1>
+		<div className="contact">
+			<div className="formSingcontainer">
+				<div className="divImg">
+					<img src={botellaVino} height="650" />
+					<h1 className="text ml-2">Contact Us</h1>
 				</div>
 				<div>
-					<FormForgetPassword />
+					<FormContactUs />
 				</div>
 			</div>
 		</div>

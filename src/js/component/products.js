@@ -130,7 +130,7 @@ export const Products = () => {
 	};
 	return (
 		<>
-			<div className="container-fluid py-2">
+			<div className=" container-fluid py-2">
 				<header>
 					<div>
 						<h1>Products</h1>

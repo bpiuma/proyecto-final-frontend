@@ -1,57 +1,32 @@
-body {
-    //background-image: url(https://wallpapershome.com/images/wallpapers/grapes-3840x2160-4k-15355.jpg);
-    background: url(../img/fondoHomeInv.jpg);
-    background-size: cover;
-    background-color: rgb(243, 230, 230);
-    background-repeat: no-repeat;
+.home{
+background: url(../img/fondoHomeInv.jpg);
+min-width: 100%;
+height:700px;
+background-size: cover;
+background-position:center ;
 }
+.home{
+font-family: 'Abril Fatface', cursive;
+//font-family: 'Acme', sans-serif;
+//font-family: 'Kanit', sans-serif;
+}
+
 
 
 .container {
     margin-top: 29%;
     justify-content: center;
 }
-
-#contenedor_boton1 {
-    background: #5E0000;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    border-color: transparent;
-    width: 19%;
-    height: auto;
-    text-align: center;
+.bienvenido h1{
+    font-size: 50px;;
+}
+.bienvenido h5{
+    font-size: 40px;;
+}
+.bienvenido p{
+    font-size: 30px;;
 }
 
-#contenedor_boton2 {
-    background: #5E0000;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    border-color: transparent;
-    width: 19%;
-    height: auto;
-    text-align: center;
-}
-
-#boton_galeria {
-    font-family: Saira ExtraCondensed;
-    color: whitesmoke;
-    font-size: 30px;
-    text-align: center;
-    background-color: transparent;
-    border-color: transparent;
-}
-
-#space {
-    width: 13%;
-    height: auto;
-    display: inline-block;
-}
-
-#boton_eventos {
-   font-family: Saira ExtraCondensed;
-    color: whitesmoke;
-    font-size: 30px;
-    text-align: center;
-    background-color: transparent;
-    border-color: transparent;
+.bienvenido img{
+    margin-right: 10px;
 }
