@@ -18,6 +18,7 @@ import { Store } from "./views/store";
 import { Gallery } from "./views/gallery";
 import { UpData } from "./views/upData";
 import { Favourite } from "./views/favourite";
+import { Pdetails } from "./views/pdetails";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -60,8 +61,8 @@ const Layout = () => {
 						<Route exact path="/store">
 							<Store />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/pdetails/:productid">
+							<Pdetails />
 						</Route>
 						<Route exact path="/gallery">
 							<Gallery />
