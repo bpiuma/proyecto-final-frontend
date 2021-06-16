@@ -101,6 +101,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				await fetchData();
 			},
+			addToTasting: async (userid, productid) => {
+				let myHeaders = new Headers();
+				const store = getStore();
+				myHeaders.append("Authorization", store.token);
+				myHeaders.append("Content-Type", "application/json");
+
+				let requestOptions = {
+					method: "POST",
+					headers: myHeaders,
+					redirect: "follow"
+				};
+				const fetchData = async () => {
+					try {
+						const response = await fetch(
+							process.env.BACKEND_URL + "/tasting/add/user/" + userid + "/product/" + productid,
+							requestOptions
+						);
+						const responseJson = await response.json();
+						if (responseJson.message.indexOf("successfully") !== -1)
+							setStore({ messages: { message: responseJson.message, icon: "success" } });
+						else setStore({ messages: { message: responseJson.message, icon: "info" } });
+					} catch (e) {
+						setStore({ messages: { message: "Session Expired, please log in again", icon: "error" } });
+						console.error(e);
+					}
+				};
+				await fetchData();
+			},
 			getUserFavs: async () => {
 				var myHeaders = new Headers();
 				myHeaders.append("Authorization", getStore().token);

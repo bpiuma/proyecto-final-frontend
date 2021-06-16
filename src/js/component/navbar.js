@@ -41,13 +41,20 @@ export const Navbar = () => {
 									<span className="sr-only">Toggle Dropleft</span>
 								</button>
 								<div className="dropdown-menu">
+									<p className="title-item">Profile</p>
+									<div className="dropdown-divider" />
 									<Link to="/upData">
 										{" "}
-										<p className="dropdown-item">Update Personal data</p>{" "}
+										<p className="dropdown-item">
+											<i className="fa fa-pencil-square-o" aria-hidden="true" /> Update Personal
+											data
+										</p>{" "}
 									</Link>
 									<Link to="/changePassword">
 										{" "}
-										<p className="dropdown-item">Change Password</p>{" "}
+										<p className="dropdown-item">
+											<i className="fa fa-key" aria-hidden="true" /> Change Password
+										</p>{" "}
 									</Link>
 									<Link to="/">
 										{" "}
@@ -60,9 +67,11 @@ export const Navbar = () => {
 												actions.setUser(null, null);
 												actions.setFavorites(null);
 											}}>
-											Logout
+											<i className="fa fa-sign-out" aria-hidden="true" /> Logout
 										</p>{" "}
 									</Link>
+									<div className="dropdown-divider" />
+									<p className="title-item">Tasting Products</p>
 								</div>
 								<div className="d-flex align-items-center">
 									<i className="fas fa-user text-white  " />
