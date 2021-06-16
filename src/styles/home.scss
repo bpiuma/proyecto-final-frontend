@@ -1,32 +1,33 @@
-.home{
-background: url(../img/fondoHomeInv.jpg);
-min-width: 100%;
-height:700px;
-background-size: cover;
-background-position:center ;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+body {
+	font-family: 'Roboto', sans-serif
 }
-.home{
-font-family: 'Abril Fatface', cursive;
-//font-family: 'Acme', sans-serif;
-//font-family: 'Kanit', sans-serif;
+.home {																										
+    background-image: url(../img/fondoHomeInv.jpg);
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
 }
 
-
-
-.container {
-    margin-top: 29%;
-    justify-content: center;
-}
-.bienvenido h1{
-    font-size: 50px;;
-}
-.bienvenido h5{
-    font-size: 40px;;
-}
-.bienvenido p{
-    font-size: 30px;;
+.container {	
+	justify-content: center;
 }
 
-.bienvenido img{
-    margin-right: 10px;
+.bienvenido h1 {
+	font-size: 50px;	
+}
+
+.bienvenido h5 {
+	font-size: 40px;	
+}
+
+.bienvenido p {
+	font-size: 30px;	
+}
+
+.bienvenido img {
+	margin-right: 10px;
 }

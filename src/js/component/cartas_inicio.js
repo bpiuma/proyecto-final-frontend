@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/cartas_inicio.scss";
 import logo from "../../img/logowas.png";
-
+import home_1 from "../../img/home_1.jpg";
+import home_2 from "../../img/home_2.jpg";
+import home_3 from "../../img/home_3.jpg";
 export const Cartas_inicio = () => {
 	return (
 		<>
 			<div className="bienvenido d-flex align-items-center justify-content-center mt-3 mb-3">
 				<img src={logo} width="30" className="" />
-				<h1>Wine & Senses</h1>
+				<h1>
+					<span>Wine</span> & <span>Senses</span>
+				</h1>
 			</div>
 			<div className="row mt-3">
 				<div className="col-md-12">
@@ -17,11 +21,7 @@ export const Cartas_inicio = () => {
 							<div className="zoom d-flex">
 								<Link to="/gallery">
 									<div className="card d-flex">
-										<img
-											src="https://www.cocinayvino.com/wp-content/uploads/2019/06/88871716_m-e1559764944562.jpg"
-											className="card-img-top"
-											alt="..."
-										/>
+										<img src={home_1} className="card-img-top" alt="..." />
 										<div className="card-body">
 											<h5 className="card-title text-center">Products</h5>
 											<p className="card-text text-center">We can help you buy best wines.</p>
@@ -38,11 +38,7 @@ export const Cartas_inicio = () => {
 							<div className="zoom d-flex">
 								<Link to="/">
 									<div className="card d-flex">
-										<img
-											src="https://winetastingbled.com/wp-content/uploads/shutterstock_791793577-900x601.jpg"
-											className="card-img-top"
-											alt="..."
-										/>
+										<img src={home_2} className="card-img-top" alt="..." />
 										<div className="card-body">
 											<h5 className="card-title text-center">Tasting</h5>
 											<p className="card-text text-center">
@@ -61,11 +57,7 @@ export const Cartas_inicio = () => {
 							<div className="zoom d-flex">
 								<Link to="/contact">
 									<div className="card d-flex">
-										<img
-											src="https://blog.nellisgroup.com/files/2020/05/sh8-4645-369.jpg"
-											className="card-img-top"
-											alt="..."
-										/>
+										<img src={home_3} className="card-img-top" alt="..." />
 										<div className="card-body">
 											<h5 className="card-title text-center">Contact us</h5>
 											<p className="card-text text-center">

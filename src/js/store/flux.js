@@ -9,7 +9,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: [],
 			productDetails: {},
 			messageCart: sessionStorage.getItem("messageCart") ? sessionStorage.getItem("messageCart") : null
-			favorites: null
 		},
 		actions: {
 			setUser: (username, tok) => {
@@ -29,7 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 				fetchProductsData();
-				if (getStore().token != null) getActions().getUserFavs();
+				//if (getStore().token != null) getActions().getUserFavs();
 			},
 			loadProductDetails: productid => {
 				const fetchProductData = async () => {
@@ -64,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const fetchData = async () => {
 					try {
 						const response = await fetch(
-							process.env.BACKEND_URL + "/" + userid + "/product/" + productid,
+							process.env.BACKEND_URL + "/cart/add/user/" + userid + "/product/" + productid,
 							requestOptions
 						);
 						const responseJson = await response.json();
@@ -78,7 +77,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetchData();
 				return store.messageCart;
 			},
-			addToCart: (userId, productId) => {},
 			getUserFavs: async () => {
 				var myHeaders = new Headers();
 				myHeaders.append("Authorization", getStore().token);
@@ -139,7 +137,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-
 				fetch(process.env.BACKEND_URL + "/passwordRecovery", requestOptions)
 					.then(response => response.json())
 					.then(result => console.log(result))

@@ -91,7 +91,8 @@ export const Navbar = () => {
 					</Link>
 				) : (
 					<i
-						className="far herart fa-heart text-white ml-3 mr-3"
+						className="fas fa-heart text-white ml-3 mr-3"
+						style={{ cursor: "pointer" }}
 						data-toggle="tooltip"
 						onClick={() =>
 							Message.fire({

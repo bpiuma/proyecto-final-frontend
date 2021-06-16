@@ -1,23 +1,9 @@
-/*#space {
-    width: 13%;
-    height: auto;
-    display: inline-block;
-}*/
-
-/*#bienvenida_pag {
-    color: black;
-    font-size: 50px;
-    text-align: center;
-    margin: auto;
-    margin-top: 25%;
-    margin-bottom: 2%;
-}*/
-
 .bienvenido h1{
-    color: #5E0000 !important;
-    //text-align: center;
+    color: #ffffff !important;    
 }
-
+.bienvenido h1 span {
+    color: #5E0000;
+}
 .cards {
     margin: auto;
     margin-bottom: 10%;

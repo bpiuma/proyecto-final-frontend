@@ -4,6 +4,13 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  background: url(../img/fondoHomeInv.jpg);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+   object-fit: cover;  
 }
 
 .navbar {
@@ -117,9 +124,26 @@ body {
   bottom: 50%;
   left: 15px;
 }
+.textForget h1 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px !important;
+  line-height: 30px;
+  color: #383A36 !important;
+  position: relative;
+  bottom: 50%;
+  left: 15px;
+}
 
+.textForget a {
+    text-decoration: none !important;
+}
+
+.textForget a:hover {
+    color:#ffffff !important;
+}
 .newPass {
-  background: url(../img/fondoUser.jpg);
+  //background: url(../img/fondoUser.jpg);
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
@@ -138,7 +162,7 @@ body {
 }
 
 .signup {
- background: url(../img/fondoUser.jpg);
+  //background: url(../img/fondoUser.jpg);
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
@@ -182,7 +206,7 @@ body {
 }
 
 .store {
-  background: url(../img/fondoeCommerce.jpg);
+  //background: url(../img/fondoeCommerce.jpg);
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
@@ -260,7 +284,6 @@ body {
   box-sizing: border-box;
 }
 
-
 .hederFavCard {
   display: flex;
   max-width: 25%;
@@ -304,15 +327,16 @@ body {
 }
 //contact
 .contact {
- background: url(../img/fondoUser.jpg);
+  //background: url(../img/fondoUser.jpg);
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }
 //galery
 .gallery {
-  background: url(../img/fondoGaleria.jpg);
+  //background: url(../img/fondoGaleria.jpg);
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
