@@ -1,11 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import copaVino from "../../img/copaVinoo.png";
+import copaVino from "../../img/logoNab.png";
+import Swal from "sweetalert2";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const userName = sessionStorage.getItem("userName");
+
+	const Message = Swal.mixin({
+		toast: true,
+		position: "top-end",
+		showConfirmButton: false,
+		timer: 3000,
+		timerProgressBar: true,
+		didOpen: toast => {
+			toast.addEventListener("mouseenter", Swal.stopTimer);
+			toast.addEventListener("mouseleave", Swal.resumeTimer);
+		}
+	});
 
 	return (
 		<nav className="navbar navbar-light  ">
@@ -21,7 +34,7 @@ export const Navbar = () => {
 							<div className="btn-group dropleft" role="group">
 								<button
 									type="button"
-									className="btn btn-secondary dropdown-toggle dropdown-toggle-split border-0"
+									className="btn text-white dropdown-toggle dropdown-toggle-split border-0"
 									data-toggle="dropdown"
 									aria-haspopup="true"
 									aria-expanded="false">
@@ -45,6 +58,7 @@ export const Navbar = () => {
 												sessionStorage.removeItem("token");
 												sessionStorage.removeItem("userName");
 												actions.setUser(null, null);
+												actions.setFavorites(null);
 											}}>
 											Logout
 										</p>{" "}
@@ -62,7 +76,7 @@ export const Navbar = () => {
 						</div>
 					) : (
 						<Link to="/login">
-							<button type="button" className="btn">
+							<button type="button" className="btn text-white">
 								Login
 							</button>
 						</Link>
@@ -71,9 +85,23 @@ export const Navbar = () => {
 				<Link to="/store">
 					<i className="fas fa-shopping-cart text-white ml-3 mr-3" />
 				</Link>
-				<Link to="/favourite">
-					<i className="far herart fa-heart ml-3 mr-3" />
-				</Link>
+				{(store.userName != null && store.userName != undefined) || store.userName == "" ? (
+					<Link to="/favourite">
+						<i className="far herart fa-heart ml-3 mr-3 text-white" />
+					</Link>
+				) : (
+					<i
+						className="fas fa-heart text-white ml-3 mr-3"
+						style={{ cursor: "pointer" }}
+						data-toggle="tooltip"
+						onClick={() =>
+							Message.fire({
+								icon: "warning",
+								title: "You must log in to see your favourite wines"
+							})
+						}
+					/>
+				)}
 			</div>
 		</nav>
 	);

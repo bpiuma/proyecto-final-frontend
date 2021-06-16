@@ -59,7 +59,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const fetchData = async () => {
 					try {
 						const response = await fetch(
-							process.env.BACKEND_URL + "/" + userid + "/product/" + productid,
+							process.env.BACKEND_URL + "/cart/add/user/" + userid + "/product/" + productid,
 							requestOptions
 						);
 						const responseJson = await response.json();
@@ -72,6 +72,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				fetchData();
 				return store.messageCart;
+			},
+			getUserFavs: async () => {
+				var myHeaders = new Headers();
+				myHeaders.append("Authorization", getStore().token);
+				var requestOptions = {
+					method: "GET",
+					headers: myHeaders,
+					redirect: "follow"
+				};
+				let userId = getActions().parseJWT(getStore().token).user.id;
+				fetch(process.env.BACKEND_URL + "/favorite/user/" + userId, requestOptions)
+					.then(response => response.json())
+					.then(result => {
+						setStore({ favorites: result });
+					})
+					.catch(error => console.log("error", error));
 			},
 			logout: async token => {
 				var myHeaders = new Headers();
@@ -115,32 +131,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-
 				fetch(process.env.BACKEND_URL + "/passwordRecovery", requestOptions)
 					.then(response => response.json())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
-			},
-
-			newPass: async data => {
-				console.log(data);
-
-				// var myHeaders = new Headers();
-				// myHeaders.append("Content-Type", "application/json");
-
-				// var raw = JSON.stringify(data);
-
-				// var requestOptions = {
-				//     method: "POST",
-				//     headers: myHeaders,
-				//     body: raw,
-				//     redirect: "follow"
-				// };
-
-				// fetch(process.env.BACKEND_URL + "/passwordRecovery", requestOptions)
-				//     .then(response => response.json())
-				//     .then(result => console.log(result))
-				//     .catch(error => console.log("error", error));
 			}
 		}
 	};

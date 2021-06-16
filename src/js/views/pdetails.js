@@ -153,7 +153,11 @@ export const Pdetails = props => {
 							</div>
 							<div className="product-content">
 								<ul className="rating">
-									<div>{renderHTML(startsPoints(starts(store.productDetails.points)))}</div>
+									<li className="fas fa-star" />
+									<li className="fas fa-star" />
+									<li className="fas fa-star" />
+									<li className="fas fa-star" />
+									<li className="fas fa-star" />
 								</ul>
 								<h3 className="title">
 									Title: <small className="text-muted mb-1">{store.productDetails.title}</small>

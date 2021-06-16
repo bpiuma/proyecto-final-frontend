@@ -4,10 +4,22 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  background: url(../img/fondoHomeInv.jpg);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+   object-fit: cover;  
 }
 
 .navbar {
   background-color: #5e0000;
+}
+
+//drdropdown
+.dropdown-item{
+    color:#5e0000 !important;
 }
 
 .user {
@@ -86,6 +98,7 @@ body {
   font-size: 25px;
   margin-top: 15px;
 }
+//forget paswword
 
 .forget {
   //background: url(../img/fondoUser.jpg);
@@ -98,16 +111,33 @@ body {
 .forget h1 {
   font-style: normal;
   font-weight: normal;
-  font-size: 40px;
-  line-height: 113px;
+  font-size: 35px !important;
+  line-height: 50px;
   color: #ffffff;
   position: relative;
   bottom: 50%;
   left: 15px;
 }
+.textForget h1 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px !important;
+  line-height: 30px;
+  color: #383A36 !important;
+  position: relative;
+  bottom: 50%;
+  left: 15px;
+}
 
+.textForget a {
+    text-decoration: none !important;
+}
+
+.textForget a:hover {
+    color:#ffffff !important;
+}
 .newPass {
-  background: url(../img/fondoUser.jpg);
+  //background: url(../img/fondoUser.jpg);
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
@@ -126,7 +156,7 @@ body {
 }
 
 .signup {
- //background: url(../img/fondoUser.jpg);
+  //background: url(../img/fondoUser.jpg);
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
@@ -170,7 +200,7 @@ body {
 }
 
 .store {
-  background: url(../img/fondoeCommerce.jpg);
+  //background: url(../img/fondoeCommerce.jpg);
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
@@ -248,12 +278,6 @@ body {
   box-sizing: border-box;
 }
 
-/*.cardFav{
-    max-width: 25%;
-    height: auto;
-    background-color:#C4C4C4;
-}*/
-
 .hederFavCard {
   display: flex;
   max-width: 25%;
@@ -290,4 +314,32 @@ body {
 .errorMsg p:before {
   display: inline;
   content: "⚠ ";
+  color: #5e0000;   //agrego lu 15/06
 }
+.errorMsg p {
+    color: #5e0000 !important; //agrego lu 15/06
+}
+//contact
+.contact {
+  //background: url(../img/fondoUser.jpg);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+//galery
+.gallery {
+  //background: url(../img/fondoGaleria.jpg);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+//newpassword
+.newPass{
+    font-size: 10px !important;
+}
+
+//formActevateUser
