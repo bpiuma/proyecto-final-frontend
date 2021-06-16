@@ -36,6 +36,7 @@ export const FormLogin = () => {
 					sessionStorage.setItem("token", result.token);
 					actions.setUser(actions.parseJWT(result.token).user.first_name, result.token);
 					actions.getUserFavs();
+					actions.getUserCart();
 				} else {
 					setMsg(result.message);
 				}

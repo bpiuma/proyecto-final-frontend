@@ -246,10 +246,10 @@ a {
 }
 
 .purchaseSummary {
-  float: right;
+  //float: right;
   background-color: #5e0000;
   width: 30%;
-  height: 150px;
+  //height: 150px;
   padding: 15px;
 }
 
@@ -262,9 +262,14 @@ a {
   color: #5e0000;
 }
 
-.cost {
-  float: right;
+.orderIcon {
+    margin-bottom: 10px;
+    align-self: center;
 }
+
+// .cost {
+//   float: right;
+// }
 
 .cardBuy {
   background-color: #c4c4c4;
