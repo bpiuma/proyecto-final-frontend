@@ -14,6 +14,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setUser: (username, tok) => {
 				setStore({ userName: username, token: tok });
 			},
+			setFavorites: favs => {
+				setStore({ favorites: favs });
+			},
 			loadData: () => {
 				const fetchProductsData = async () => {
 					try {
@@ -25,6 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 				fetchProductsData();
+				//if (getStore().token != null) getActions().getUserFavs();
 			},
 			loadProductDetails: productid => {
 				const fetchProductData = async () => {
@@ -107,7 +111,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch(process.env.BACKEND_URL + "/logout", requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					.then(result => {
+						console.log(result);
+					})
 					.catch(error => console.log("error", error));
 			},
 

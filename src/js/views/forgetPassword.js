@@ -14,7 +14,7 @@ export const ForgetPassword = () => {
 			<div className="formcontainer">
 				<div className="red">
 					<img src={botellaVino} height="450" />
-					<h1 className="text">Forgot Password</h1>
+					<h1 className>Forgot Password</h1>
 				</div>
 				<div>
 					<FormForgetPassword />

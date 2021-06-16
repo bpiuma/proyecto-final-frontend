@@ -51,7 +51,8 @@ export const FormForgetPassword = () => {
 					placeholder="Please enter your email address"
 				/>
 				<div className="errorMsg">
-					{errors.email && errors.email.type === "required" && <p>This field is required</p>}
+					{errors.email &&
+						errors.email.type === "required" && <p className="small">This field is required</p>}
 				</div>
 			</div>
 			<button type="submit" className="btnLogin">
