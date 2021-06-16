@@ -103,6 +103,22 @@ export const Pdetails = props => {
 			});
 		}
 	};
+
+	const addToTasting = async (user, productid) => {
+		if (user.id) {
+			await actions.addToTasting(user.id, productid);
+			Message.fire({
+				icon: store.messages.icon,
+				title: store.messages.message
+			});
+		} else {
+			Message.fire({
+				icon: "warning",
+				title: "You must log in to add products to the favorites!"
+			});
+		}
+	};
+
 	const addToCart = async (user, productid) => {
 		if (user.id) {
 			await actions.addToCart(user.id, productid);
@@ -152,8 +168,11 @@ export const Pdetails = props => {
 										</a>
 									</li>
 									<li>
-										<a href="#" data-tip="Add to Zoom Tasting Event">
-											<i className="fa fa-search-plus" style={styles} />
+										<a
+											href="#"
+											data-tip="Add Product to Tasting(Max. 3)"
+											onClick={() => addToTasting(user, store.productDetails.id)}>
+											<i className="fa fa-cart-plus" aria-hidden="true" style={styles} />
 										</a>
 									</li>
 									<li>
