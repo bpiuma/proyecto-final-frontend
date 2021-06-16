@@ -88,12 +88,27 @@ export const Pdetails = props => {
 		}
 	});
 	const user = store.token ? actions.parseJWT(store.token).user : "User Not Logged in";
-	const addToCart = (user, productid) => {
+
+	const addToFavorites = async (user, productid) => {
 		if (user.id) {
-			const data = actions.addToCart(user.id, productid);
+			await actions.addToFavorites(user.id, productid);
 			Message.fire({
-				icon: "success",
-				title: data ? data : sessionStorage.getItem("messageCart")
+				icon: store.messages.icon,
+				title: store.messages.message
+			});
+		} else {
+			Message.fire({
+				icon: "warning",
+				title: "You must log in to add products to the favorites!"
+			});
+		}
+	};
+	const addToCart = async (user, productid) => {
+		if (user.id) {
+			await actions.addToCart(user.id, productid);
+			Message.fire({
+				icon: store.messages.icon,
+				title: store.messages.message
 			});
 		} else {
 			Message.fire({
@@ -129,7 +144,10 @@ export const Pdetails = props => {
 								</span>
 								<ul className="product-links">
 									<li>
-										<a href="#" data-tip="Add to Wishlist">
+										<a
+											href="#"
+											data-tip="Add to Wishlist"
+											onClick={() => addToFavorites(user, store.productDetails.id)}>
 											<i className="fas fa-heart" />
 										</a>
 									</li>
@@ -230,7 +248,6 @@ export const Pdetails = props => {
 									</div>
 								</div>
 								<div className="price">Price: USD {store.productDetails.price}</div>
-
 								<a
 									className="add-to-cart"
 									href="#"

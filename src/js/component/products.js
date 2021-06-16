@@ -9,6 +9,7 @@ import withReactContent from "sweetalert2-react-content";
 import { ExternalLink } from "react-external-link";
 export const Products = () => {
 	const { store, actions } = useContext(Context);
+	const [msg, setMsg] = useState("");
 
 	const starts = points => {
 		return points > 0 && points <= 20
@@ -83,12 +84,26 @@ export const Products = () => {
 		}
 	});
 
-	const addToCart = (user, productid) => {
+	const addToFavorites = async (user, productid) => {
 		if (user.id) {
-			const data = actions.addToCart(user.id, productid);
+			await actions.addToFavorites(user.id, productid);
 			Message.fire({
-				icon: "success",
-				title: data ? data : sessionStorage.getItem("messageCart")
+				icon: store.messages.icon,
+				title: store.messages.message
+			});
+		} else {
+			Message.fire({
+				icon: "warning",
+				title: "You must log in to add products to the favorites!"
+			});
+		}
+	};
+	const addToCart = async (user, productid) => {
+		if (user.id) {
+			await actions.addToCart(user.id, productid);
+			Message.fire({
+				icon: store.messages.icon,
+				title: store.messages.message
 			});
 		} else {
 			Message.fire({
@@ -152,7 +167,7 @@ export const Products = () => {
 														<button
 															type="button"
 															className="btn btn-danger btn-sm"
-															onClick={""}>
+															onClick={() => addToFavorites(user, item.id)}>
 															<i className="fa fa-heart-o heart" aria-hidden="true" />
 														</button>
 													</div>

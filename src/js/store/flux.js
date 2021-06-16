@@ -8,7 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			products: [],
 			favorites: [],
 			productDetails: {},
-			messageCart: sessionStorage.getItem("messageCart") ? sessionStorage.getItem("messageCart") : null
+			messages: { message: null, icon: null }
 		},
 		actions: {
 			setUser: (username, tok) => {
@@ -28,7 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 				fetchProductsData();
-				//if (getStore().token != null) getActions().getUserFavs();
+				if (getStore().token != null) getActions().getUserFavs();
 			},
 			loadProductDetails: productid => {
 				const fetchProductData = async () => {
@@ -42,18 +42,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 				fetchProductData();
-				return () => console.log("loading in productDetails...");
 			},
-			addToCart: (userid, productid) => {
+			addToCart: async (userid, productid) => {
 				let myHeaders = new Headers();
 				const store = getStore();
 				myHeaders.append("Authorization", store.token);
 				myHeaders.append("Content-Type", "application/json");
-				let msg;
 				let raw = JSON.stringify({
 					cant: 1
 				});
-
 				let requestOptions = {
 					method: "POST",
 					headers: myHeaders,
@@ -67,15 +64,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 							requestOptions
 						);
 						const responseJson = await response.json();
-						console.log(responseJson.message);
-						sessionStorage.setItem("messageCart", responseJson.message);
-						setStore({ messageCart: responseJson.message });
+						setStore({ messages: { message: responseJson.message, icon: "success" } });
 					} catch (e) {
+						setStore({ messages: { message: "Session Expired, please log in again", icon: "error" } });
 						console.error(e);
 					}
 				};
-				fetchData();
-				return store.messageCart;
+				await fetchData();
+				//return store.messages;
+			},
+			addToFavorites: async (userid, productid) => {
+				let myHeaders = new Headers();
+				const store = getStore();
+				myHeaders.append("Authorization", store.token);
+				myHeaders.append("Content-Type", "application/json");
+
+				let requestOptions = {
+					method: "POST",
+					headers: myHeaders,
+					redirect: "follow"
+				};
+				const fetchData = async () => {
+					try {
+						const response = await fetch(
+							process.env.BACKEND_URL + "/favorite/add/user/" + userid + "/product/" + productid,
+							requestOptions
+						);
+						const responseJson = await response.json();
+						if (responseJson.message.indexOf("successfully") !== -1)
+							setStore({ messages: { message: responseJson.message, icon: "success" } });
+						else setStore({ messages: { message: responseJson.message, icon: "info" } });
+					} catch (e) {
+						setStore({ messages: { message: "Session Expired, please log in again", icon: "error" } });
+						console.error(e);
+					}
+				};
+				await fetchData();
 			},
 			getUserFavs: async () => {
 				var myHeaders = new Headers();
