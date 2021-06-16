@@ -1,62 +1,89 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link, Redirect } from "react-router-dom";
+import { Context } from "../store/appContext";
 import provisorio from "../../img/provisorio.jpg";
-import botellaCcopa from "../../img/botellaCcopa.svg";
 import copaVino from "../../img/copaVino.png";
+import { OrderRow } from "../component/orderRow";
+import Swal from "sweetalert2";
 
 export const ECommerce = () => {
+	const { store, actions } = useContext(Context);
+
+	let userId = actions.parseJWT(store.token).user.id;
+
+	const emptyCart = async () => {
+		var myHeaders = new Headers();
+		myHeaders.append("Authorization", store.token);
+		var requestOptions = {
+			method: "DELETE",
+			headers: myHeaders,
+			redirect: "follow"
+		};
+		fetch(process.env.BACKEND_URL + "/cart/user/" + userId, requestOptions)
+			.then(response => response.json())
+			.then(result => {
+				console.log(result);
+				actions.setCart(null);
+				sessionStorage.removeItem("cart");
+			})
+			.catch(error => console.log("error", error));
+	};
+
 	return (
-		<>
-			<div className="container-fluid py-2">
-				<header>
-					<div>
-						<h1>Store</h1>
-					</div>
-				</header>
-				<div className="titleBuy">
+		<div className="eCommerce container mt-5">
+			<div className="row">
+				<div className="titleBuy col-12">
 					<img className="my-1 mx-1" src={copaVino} width="30" />
 					<h1 className="ml-1">Order details</h1>
 				</div>
-				<div className="purchaseSummary">
-					<h5 className="cost">$1590</h5>
-					<h5>total</h5>
-					<button type="button" className="btn bg-white">
-						<i className="fas fa-shopping-cart mr-2" />
-						Finish Buy
-					</button>
+			</div>
+
+			<div className="row">
+				<div className="col-9">
+					{store.cart.userCartProduct.map((item, i) => {
+						return (
+							<OrderRow
+								key={i}
+								image={item.product.image}
+								name={item.product.title}
+								quantity={item.cant}
+								id={item.product.id}
+								amount={item.amount}
+								price={item.product.price}
+							/>
+						);
+					})}
 				</div>
-				<div className="cardBuy row">
-					<img className="ml-1 mt-1" src={provisorio} height="90" />
-					<h5 className="NameWine col-4 align-self-center text-center">Name Wine</h5>
-					<div className="dropdown align-self-center mt-1">
-						<button
-							className="btn  dropdown-toggle"
-							type="button"
-							id="dropdownMenuButton"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
-							Cant
-						</button>
-						<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a className="dropdown-item">1</a>
-							<a className="dropdown-item">2</a>
-							<a className="dropdown-item">3</a>
-							<a className="dropdown-item">4</a>
-							<a className="dropdown-item">5</a>
-							<a className="dropdown-item">6</a>
-							<a className="dropdown-item">7</a>
-							<a className="dropdown-item">8</a>
-							<a className="dropdown-item">9</a>
-							<a className="dropdown-item">10</a>
-						</div>
+
+				<div className="purchaseSummary col-3">
+					<div className="row">
+						<h5 className="col text-right">Total:</h5>
+						<h5 className="col cost">{"$ " + store.totalAmount}</h5>
 					</div>
-					<div className="row costDelete ">
-						<h5 className="cost align-self-center ">$1559</h5>
-						<i className="fas fa-trash-alt ml-3 align-self-center" />
+					<div className="row d-flex justify-content-center">
+						<button
+							type="button"
+							className="btn bg-white mt-3"
+							onClick={() =>
+								Swal.fire({
+									title: "Thank you!",
+									text: "Your purchase is being processed",
+									icon: "success",
+									showCancelButton: false,
+									confirmButtonText: "OK"
+								}).then(result => {
+									if (result.isConfirmed) {
+										window.location = "/";
+										emptyCart();
+									}
+								})
+							}>
+							<i className="fas fa-shopping-cart mr-2" />
+							Finish Buy
+						</button>
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
