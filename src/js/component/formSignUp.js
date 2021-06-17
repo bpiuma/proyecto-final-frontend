@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
+import Swal from "sweetalert2";
 
 export const FormSignUp = () => {
 	const { store, actions } = useContext(Context);
@@ -10,8 +11,6 @@ export const FormSignUp = () => {
 		handleSubmit,
 		formState: { errors }
 	} = useForm();
-	const [auth, setAuth] = useState(false);
-	const [msg, setMsg] = useState("");
 
 	// funcion para validar el formato del email
 	const validateEmail = email => {
@@ -35,32 +34,45 @@ export const FormSignUp = () => {
 		return false;
 	};
 
+	const alert = (msg, type) => {
+		Swal.fire({
+			title: msg,
+			//text: "Your purchase is being processed",
+			icon: type,
+			showCancelButton: false,
+			confirmButtonText: "OK"
+		}).then(result => {
+			if (result.isConfirmed) {
+				//window.location = "/";
+			}
+		});
+	};
+
 	const createUser = async data => {
 		var myHeaders = new Headers();
 		myHeaders.append("Content-Type", "application/json");
-
 		var raw = JSON.stringify(data);
-
 		var requestOptions = {
 			method: "POST",
 			headers: myHeaders,
 			body: raw,
 			redirect: "follow"
 		};
-
-		console.log(process.env.BACKEND_URL + "/user");
-
 		fetch(process.env.BACKEND_URL + "/user", requestOptions)
 			.then(response => response.json())
 			.then(result => {
 				console.log(result);
 				if (result.message == "User created successfully") {
-					setAuth(true);
 					sessionStorage.setItem("userName", actions.parseJWT(result.token).newUser.first_name);
 					sessionStorage.setItem("token", result.token);
 					actions.setUser(actions.parseJWT(result.token).newUser.first_name, result.token);
 				} else {
-					setMsg(result.message);
+					if (result.message == "User already exists with this email") {
+						alert(result.message, "error");
+					}
+					if (result.message == "Please check your mailbox") {
+						alert(result.message, "success");
+					}
 				}
 			})
 			.catch(error => console.log("error", error));
@@ -215,8 +227,6 @@ export const FormSignUp = () => {
 						)}
 				</div>
 			</div>
-
-			<div>{auth ? <Redirect to="/" /> : msg != "" ? <p className="alert alert-danger">{msg}</p> : ""}</div>
 
 			<button type="submit" className="btn btnLogin float-right">
 				Register

@@ -122,7 +122,9 @@ export const Navbar = () => {
 							})
 						}
 					/>
-				) : store.cart == null || store.cart.message == "The user has no products in cart" ? (
+				) : store.cart == null ||
+				store.cart == [] ||
+				store.cart.message == "The user has no products in cart" ? (
 					<i
 						className="fas fa-shopping-cart text-white ml-3 mr-3"
 						data-toggle="tooltip"
@@ -131,21 +133,21 @@ export const Navbar = () => {
 								icon: "warning",
 								title: "You have not added products to the cart yet"
 							})
-						}
-					/>
+						}>
+						<span className="badge badge-pill badge-info">0</span>
+					</i>
 				) : (
 					<Link to="/store">
-						<i className="fas fa-shopping-cart text-white ml-3 mr-3" />
+						<i className="fas fa-shopping-cart text-white ml-3 mr-3">
+							<span className="badge badge-pill badge-info">3</span>
+							{/* {store.cart.userCartProduct.length} */}
+						</i>
 					</Link>
 				)}
 
-				{(store.userName != null && store.userName != undefined) || store.userName == "" ? (
-					<Link to="/favourite">
-						<i className="far herart fa-heart ml-3 mr-3 text-white" />
-					</Link>
-				) : (
+				{!(store.userName != null && store.userName != undefined) || store.userName == "" ? (
 					<i
-						className="fas fa-heart text-white ml-3 mr-3"
+						className="fas fa-heart ml-3 mr-3 text-white"
 						style={{ cursor: "pointer" }}
 						data-toggle="tooltip"
 						onClick={() =>
@@ -155,6 +157,26 @@ export const Navbar = () => {
 							})
 						}
 					/>
+				) : store.favorites == null ||
+				store.favorites == [] ||
+				store.favorites.message == "User does not have favorite products" ? (
+					<i
+						className="fas fa-heart ml-3 mr-3 text-white"
+						data-toggle="tooltip"
+						onClick={() =>
+							Message.fire({
+								icon: "warning",
+								title: "You have not added favourites wines yet"
+							})
+						}>
+						<span className="badge badge-pill badge-info">0</span>
+					</i>
+				) : (
+					<Link to="/favourite">
+						<i className="fas fa-heart ml-3 mr-3 text-white">
+							<span className="badge badge-pill badge-info">{store.favorites.length}</span>
+						</i>
+					</Link>
 				)}
 			</div>
 		</nav>
