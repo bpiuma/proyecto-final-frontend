@@ -10,7 +10,6 @@ export const Favourite = () => {
 
 	return (
 		<div className="store">
-			<h1 className="titleStore">store</h1>
 			<Wishlist />
 		</div>
 	);
