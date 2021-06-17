@@ -147,7 +147,7 @@ export const Pdetails = props => {
 	return (
 		<>
 			<div className="container-fluid py-2">
-				<h2>Product Details</h2>
+				<h2 className="h2">Product Details</h2>
 				<div className="row d-flex justify-content-center">
 					<div className="col-md-3 col-sm-6">
 						<div className="product-grid">
