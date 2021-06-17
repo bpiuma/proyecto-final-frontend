@@ -2,18 +2,54 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/cartas_inicio.scss";
-import calendar_4 from "../../img/calendar_4.png";
-import zoom_1 from "../../img/zoom_1.png";
-import zoom_2 from "../../img/zoom_2.png";
+import calendar_2 from "../../img/calendar_2.png";
+import zoom_1 from "../../img/zoom_2.png";
+import zoom_2 from "../../img/zoom_1.png";
 import zoom_3 from "../../img/zoom_3.png";
 import { ExternalLink } from "react-external-link";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import "../../styles/productDetails.scss";
 export const AllEvents = () => {
 	const { store, actions } = useContext(Context);
+	const replaceDate = date => {
+		//const newDate = date.replace(/(\d{4})-(\d{2})-(\d{2})/, "$3/$2/$1");
+		const date1 = new Date(date);
+		const newDate = date1.getDate() + "/" + (date1.getMonth() + 1) + "/" + date1.getFullYear();
+		return newDate;
+	};
 
+	const user = store.token ? actions.parseJWT(store.token).user : "User Not Logged in";
+	const Message = Swal.mixin({
+		toast: true,
+		position: "top-end",
+		showConfirmButton: false,
+		timer: 3000,
+		timerProgressBar: true,
+		didOpen: toast => {
+			toast.addEventListener("mouseenter", Swal.stopTimer);
+			toast.addEventListener("mouseleave", Swal.resumeTimer);
+		}
+	});
+
+	const addUserToEvent = async (user, eventid) => {
+		if (user.id) {
+			await actions.addUserToEvent(user.id, eventid);
+			Message.fire({
+				icon: store.messages.icon,
+				title: store.messages.message
+			});
+		} else {
+			Message.fire({
+				icon: "warning",
+				title: "You must log in to add products to the favorites!"
+			});
+		}
+	};
 	return (
 		<>
 			<div className="bienvenido d-flex align-items-center justify-content-center mt-3 mb-3">
-				<img src={calendar_4} width="48" height="48" className="" />
+				<img src={calendar_2} width="48" height="48" className="" />
 				<h1>Tasting Events</h1>
 			</div>
 			<div className="row mt-3">
@@ -25,19 +61,57 @@ export const AllEvents = () => {
 										<div className="zoom d-flex">
 											<Link to="#">
 												<div className="card d-flex">
-													<img src={zoom_1} className="card-img-top" alt="..." />
+													<div className="product-grid">
+														<div className="product-image">
+															<img
+																src={
+																	item.id === 1
+																		? zoom_1
+																		: item.id === 2
+																			? zoom_2
+																			: item.id === 3
+																				? zoom_3
+																				: zoom_1
+																}
+																className="card-img-top"
+																alt="..."
+															/>
+															<ul className="product-links">
+																<li>
+																	<a
+																		href="#"
+																		data-tip="Add User to Event"
+																		onClick={() => addUserToEvent(user, item.id)}>
+																		<i
+																			className="fa fa-calendar-plus-o"
+																			aria-hidden="true"
+																		/>
+																	</a>
+																</li>
+																<li>
+																	<ExternalLink
+																		href={item.link_zoom}
+																		data-tip="Open Link of Zoom">
+																		<i
+																			className="fa fa-video-camera"
+																			aria-hidden="true"
+																		/>
+																	</ExternalLink>
+																</li>
+															</ul>
+														</div>
+													</div>
 													<div className="card-body">
-														<h5 className="card-title text-center">{item.title}</h5>
-														<p className="card-text text-center">{item.description}</p>
+														<h5 className="card-title text-left">{item.title}</h5>
+														<p className="card-text text-left">{item.description}</p>
 													</div>
 													<div className="card-footer">
-														<small className="text-muted">
-															<i className="fa fa-calendar" aria-hidden="true" />
-														</small>
-														<small className="text-muted">
-															<i className="fa fa-calendar" aria-hidden="true" />
-															{item.end_date}
-														</small>
+														<span className="card-text text-center">
+															<i className="fa fa-calendar" aria-hidden="true" /> Start
+															Date: {replaceDate(item.start_date)}{" "}
+															<i className="fa fa-calendar" aria-hidden="true" /> End
+															Date: {replaceDate(item.end_date)}
+														</span>
 													</div>
 												</div>
 											</Link>
