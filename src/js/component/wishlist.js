@@ -81,11 +81,12 @@ export const Wishlist = () => {
 		}
 	});
 
-	const addToCart = (user, productid) => {
+	const addToCart = async (user, productid) => {
 		if (user.id) {
+			await actions.addToCart(user.id, productid);
 			Message.fire({
-				icon: "success",
-				title: "Product added successfully to cart."
+				icon: store.messages.icon,
+				title: store.messages.message
 			});
 		} else {
 			Message.fire({

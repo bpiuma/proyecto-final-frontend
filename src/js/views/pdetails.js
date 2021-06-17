@@ -266,7 +266,15 @@ export const Pdetails = props => {
 										</div>
 									</div>
 								</div>
-								<div className="price">Price: USD {store.productDetails.price}</div>
+								<div className="d-flex align-items-center">
+									<Link to="/gallery">
+										<button type="button" className="btn btn-secondary btn-sm">
+											<i className="fas fa-caret-left mr-1 mt-1" />
+											Back
+										</button>
+									</Link>
+									<div className="price m-auto">Price: USD {store.productDetails.price}</div>
+								</div>
 								<a
 									className="add-to-cart"
 									href="#"

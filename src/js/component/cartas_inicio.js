@@ -36,11 +36,11 @@ export const Cartas_inicio = () => {
 							<div className="espacio_cards" />
 
 							<div className="zoom d-flex">
-								<Link to="/">
+								<Link to="/events">
 									<div className="card d-flex">
 										<img src={home_2} className="card-img-top" alt="..." />
 										<div className="card-body">
-											<h5 className="card-title text-center">Tasting</h5>
+											<h5 className="card-title text-center">Tasting Events</h5>
 											<p className="card-text text-center">
 												Instance where you can taste the most outstanding wines with our advice.
 											</p>
