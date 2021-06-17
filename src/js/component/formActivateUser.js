@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
+import Swal from "sweetalert2";
 
 export const FormActivateUser = () => {
 	const { store, actions } = useContext(Context);
@@ -10,8 +11,6 @@ export const FormActivateUser = () => {
 		handleSubmit,
 		formState: { errors }
 	} = useForm();
-	const [auth, setAuth] = useState(false);
-	const [msg, setMsg] = useState("");
 
 	//obtenemos el token que viene en la url
 	let { token } = useParams();
@@ -26,26 +25,36 @@ export const FormActivateUser = () => {
 		user = actions.parseJWT(newToken).newUser;
 	}
 
+	const alert = (msg, type) => {
+		Swal.fire({
+			title: msg,
+			//text: "Your purchase is being processed",
+			icon: type,
+			showCancelButton: false,
+			confirmButtonText: "OK"
+		}).then(result => {
+			if (result.isConfirmed) {
+				//window.location = "/";
+			}
+		});
+	};
+
 	const changePass = async data => {
 		var myHeaders = new Headers();
 		myHeaders.append("Authorization", newToken);
 		myHeaders.append("Content-Type", "application/json");
-
 		var raw = "";
-
 		var requestOptions = {
 			method: "PUT",
 			headers: myHeaders,
 			body: raw,
 			redirect: "follow"
 		};
-
 		fetch(process.env.BACKEND_URL + "/user/" + user.id + "/activateUser", requestOptions)
 			.then(response => response.json())
 			.then(result => {
 				console.log(result);
-				setAuth(true);
-				setMsg("Registration completed successfully");
+				alert(result.message, "success");
 			})
 			.catch(error => console.log("error", error));
 	};
@@ -60,9 +69,6 @@ export const FormActivateUser = () => {
 			<button type="submit" className="btnLogin">
 				Finish
 			</button>
-			<div className={auth ? "d-inline" : "d-none"}>
-				<p className="alert alert-danger mt-3">{msg}</p>
-			</div>
 		</form>
 	);
 };

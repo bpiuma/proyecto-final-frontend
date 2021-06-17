@@ -75,6 +75,7 @@ export const ECommerce = () => {
 									if (result.isConfirmed) {
 										window.location = "/";
 										emptyCart();
+										actions.setCart([]);
 									}
 								})
 							}>

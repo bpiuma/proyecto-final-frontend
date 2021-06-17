@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
+import Swal from "sweetalert2";
 
 // funcion para validar el formato del password
 const validatePassword = pass => {
@@ -18,6 +19,20 @@ const validatePassword = pass => {
 	return false;
 };
 
+const alert = (msg, type) => {
+	Swal.fire({
+		title: msg,
+		//text: "Your purchase is being processed",
+		icon: type,
+		showCancelButton: false,
+		confirmButtonText: "OK"
+	}).then(result => {
+		if (result.isConfirmed && msg == "Password Updated!") {
+			// window.location = "/";
+		}
+	});
+};
+
 export const FormChangePassword = () => {
 	const { store, actions } = useContext(Context);
 	const {
@@ -25,34 +40,32 @@ export const FormChangePassword = () => {
 		handleSubmit,
 		formState: { errors }
 	} = useForm();
-	const [auth, setAuth] = useState(false);
-	const [msg, setMsg] = useState("");
 
 	const changePass = async data => {
 		var myHeaders = new Headers();
 		myHeaders.append("Authorization", store.token);
 		myHeaders.append("Content-Type", "application/json");
-
 		var raw = JSON.stringify({
 			oldPassword: data.oldPassword,
 			newPassword: data.newPassword
 		});
-
 		var requestOptions = {
 			method: "PUT",
 			headers: myHeaders,
 			body: raw,
 			redirect: "follow"
 		};
-
 		let userId = actions.parseJWT(store.token).user.id;
-
 		fetch(process.env.BACKEND_URL + "/user/" + userId + "/resetPassword", requestOptions)
 			.then(response => response.json())
 			.then(result => {
 				console.log(result);
-				setAuth(true);
-				setMsg(result.message);
+				if (result.message == "Invalid password") {
+					alert(result.message, "error");
+				}
+				if (result.message == "Password Updated!") {
+					alert(result.message, "success");
+				}
 			})
 			.catch(error => console.log("error", error));
 	};
@@ -102,9 +115,6 @@ export const FormChangePassword = () => {
 			<button type="submit" className="btnLogin">
 				Submit
 			</button>
-			<div className={auth ? "d-inline" : "d-none"}>
-				<p className="alert alert-danger mt-3">{msg}</p>
-			</div>
 		</form>
 	);
 };

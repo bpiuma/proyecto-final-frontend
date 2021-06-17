@@ -9,7 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: [],
 			productDetails: {},
 			messages: { message: null, icon: null },
-			cart: sessionStorage.getItem("cart") ? sessionStorage.getItem("cart") : null,
+			cart: sessionStorage.getItem("cart") ? sessionStorage.getItem("cart") : [],
 			totalAmount: sessionStorage.getItem("cart") ? sessionStorage.getItem("cart").totalCart : null,
 			tasting: [],
 			events: []

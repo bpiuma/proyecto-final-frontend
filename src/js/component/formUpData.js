@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
+import Swal from "sweetalert2";
 
 export const FormUpData = () => {
 	const { store, actions } = useContext(Context);
@@ -10,8 +11,20 @@ export const FormUpData = () => {
 		handleSubmit,
 		formState: { errors }
 	} = useForm();
-	const [auth, setAuth] = useState(false);
-	const [msg, setMsg] = useState("");
+
+	const alert = (msg, type) => {
+		Swal.fire({
+			title: msg,
+			//text: "Your purchase is being processed",
+			icon: type,
+			showCancelButton: false,
+			confirmButtonText: "OK"
+		}).then(result => {
+			if (result.isConfirmed) {
+				//window.location = "/";
+			}
+		});
+	};
 
 	// funcion para validar el formato del email
 	const validateEmail = email => {
@@ -20,31 +33,28 @@ export const FormUpData = () => {
 	};
 
 	const user = actions.parseJWT(store.token).user;
-	// const year = user.date_of_birth.getFullYear();
-	// const month = user.date_of_birth.getMonth();
-	// const day = user.date_of_birth.getDate();
-	// console.log(year, month, day);
 
 	const updateUser = async data => {
 		var myHeaders = new Headers();
 		myHeaders.append("Authorization", store.token);
 		myHeaders.append("Content-Type", "application/json");
-
 		var raw = JSON.stringify(data);
-
 		var requestOptions = {
 			method: "PUT",
 			headers: myHeaders,
 			body: raw,
 			redirect: "follow"
 		};
-
 		fetch(process.env.BACKEND_URL + "/user/" + user.id, requestOptions)
 			.then(response => response.json())
 			.then(result => {
 				console.log(result);
-				setAuth(true);
-				setMsg(result.message);
+				if (result.message == "There is another user with this email") {
+					alert(result.message, "error");
+				}
+				if (result.message == "User updated successfully") {
+					alert(result.message, "success");
+				}
 			})
 			.catch(error => console.log("error", error));
 	};
@@ -178,9 +188,6 @@ export const FormUpData = () => {
 			<button type="submit" className="btnLogin">
 				Up data
 			</button>
-			<div className={auth ? "d-inline" : "d-none"}>
-				<p className="alert alert-danger mt-3">{msg}</p>
-			</div>
 		</form>
 	);
 };

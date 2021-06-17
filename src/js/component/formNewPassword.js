@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
+import Swal from "sweetalert2";
 
 // funcion para validar el formato del password
 const validatePassword = pass => {
@@ -26,8 +27,6 @@ export const FormNewPassword = () => {
 		handleSubmit,
 		formState: { errors }
 	} = useForm();
-	const [auth, setAuth] = useState(false);
-	const [msg, setMsg] = useState("");
 
 	//obtenemos el token que viene en la url
 	let { token } = useParams();
@@ -42,29 +41,39 @@ export const FormNewPassword = () => {
 		user = actions.parseJWT(newToken).newUser;
 	}
 
+	const alert = (msg, type) => {
+		Swal.fire({
+			title: msg,
+			//text: "Your purchase is being processed",
+			icon: type,
+			showCancelButton: false,
+			confirmButtonText: "OK"
+		}).then(result => {
+			if (result.isConfirmed) {
+				//window.location = "/";
+			}
+		});
+	};
+
 	const changePass = async data => {
 		var myHeaders = new Headers();
 		myHeaders.append("Authorization", newToken);
 		myHeaders.append("Content-Type", "application/json");
-
 		var raw = JSON.stringify({
 			oldPassword: user.password,
 			newPassword: data.newPassword
 		});
-
 		var requestOptions = {
 			method: "PUT",
 			headers: myHeaders,
 			body: raw,
 			redirect: "follow"
 		};
-
 		fetch(process.env.BACKEND_URL + "/user/" + user.id + "/resetPassword", requestOptions)
 			.then(response => response.json())
 			.then(result => {
 				console.log(result);
-				setAuth(true);
-				setMsg(result.message);
+				alert(result.message, "success");
 			})
 			.catch(error => console.log("error", error));
 	};
@@ -99,9 +108,6 @@ export const FormNewPassword = () => {
 			<button type="submit" className="btnLogin">
 				Submit
 			</button>
-			<div className={auth ? "d-inline" : "d-none"}>
-				<p className="alert alert-danger mt-3">{msg}</p>
-			</div>
 		</form>
 	);
 };

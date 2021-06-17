@@ -89,14 +89,26 @@ export const AllEvents = () => {
 																	</a>
 																</li>
 																<li>
-																	<ExternalLink
+																	<a
 																		href={item.link_zoom}
-																		data-tip="Open Link of Zoom">
+																		target="_blank"
+																		rel="noopener noreferrer"
+																		data-tip="Zoom: Meeting ID: 789 4990 1541 / Passcode: E4B61L">
 																		<i
 																			className="fa fa-video-camera"
 																			aria-hidden="true"
 																		/>
-																	</ExternalLink>
+																	</a>
+
+																	{/* <Link
+                                                                    to={{ pathname: item.link_zoom }}
+                                                                    target="_blank"
+                                                                    data-tip="Zoom: Meeting ID: 789 4990 1541 / Passcode: E4B61L">
+                                                                    <i
+                                                                        className="fa fa-video-camera"
+                                                                        aria-hidden="true"
+                                                                    />
+                                                                </Link> */}
 																</li>
 															</ul>
 														</div>
