@@ -4,21 +4,26 @@
 }
 
 .logo {
-   size: 30px;
+   size: 20px;
    display: inline-flex;
 }
 
 .espacio {
-    width: 24px;
+    width: 14px;
 }
 
 .fab {
-    font-size: 40px;
+    font-size: 30px;
     color: whitesmoke;
 }
 
 .far {
-    font-size: 40px;
+    font-size: 30px;
+    color: whitesmoke;
+    float: inline-end;
+}
+.comentarios{
+    font-size: 30px !important;
     color: whitesmoke;
     float: inline-end;
 }

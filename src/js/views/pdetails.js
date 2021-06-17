@@ -266,10 +266,10 @@ export const Pdetails = props => {
 										</div>
 									</div>
 								</div>
-								<div className="d-flex align-items-center">
+								<div className="d-flex align-items-center pt-3">
 									<Link to="/gallery">
-										<button type="button" className="btn btn-secondary btn-sm">
-											<i className="fas fa-caret-left mr-1 mt-1" />
+										<button type="button" className="btnBack btn  btn-sm d-flex align-items-center">
+											<i className="fas fa-arrow-left mr-3" />
 											Back
 										</button>
 									</Link>

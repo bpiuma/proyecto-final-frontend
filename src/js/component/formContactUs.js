@@ -67,7 +67,7 @@ export const FormContactUs = () => {
 			</div>
 
 			<button type="submit" className="btn btnLogin float-right">
-				Register
+				Send
 			</button>
 		</form>
 	);

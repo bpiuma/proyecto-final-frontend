@@ -130,8 +130,8 @@ export const Wishlist = () => {
 			<div className="container-fluid py-2">
 				<header>
 					<div className="text-center">
-						<h1 className="text-dark">Your favourites wines</h1>
-						<p className="text-dark">👇 Scroll left or right to see all your favorite wines.</p>
+						<h1 className="titlefavourites">Your favourites wines</h1>
+						<p className="text-white">👇 Scroll left or right to see all your favorite wines.</p>
 					</div>
 				</header>
 				{store.favorites.message == "User does not have favorite products" ? (

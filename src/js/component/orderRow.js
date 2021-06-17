@@ -80,7 +80,7 @@ export const OrderRow = props => {
 	return (
 		<div className={show ? "row" : "d-none"}>
 			<div className="col-3">
-				<img className="ml-1 mt-1" src={props.image} height="90" />
+				<img className="ml-1 mt-1" src={props.image} width="150" />
 			</div>
 			<div className="col-4 d-flex align-items-center">
 				<h5>{props.name}</h5>

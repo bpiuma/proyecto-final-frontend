@@ -33,13 +33,12 @@ export const ECommerce = () => {
 		<div className="eCommerce container mt-5">
 			<div className="row">
 				<div className="titleBuy col-12">
-					<img className="my-1 mx-1" src={copaVino} width="30" />
-					<h1 className="ml-1">Order details</h1>
+					<h1 className="ml-1 text-white text-center m-auto">Order details</h1>
 				</div>
 			</div>
 
 			<div className="row">
-				<div className="col-9">
+				<div className="tarjetaCompra col-9">
 					{store.cart.userCartProduct.map((item, i) => {
 						return (
 							<OrderRow
@@ -61,6 +60,14 @@ export const ECommerce = () => {
 						<h5 className="col cost">{"$ " + store.totalAmount}</h5>
 					</div>
 					<div className="row d-flex justify-content-center">
+						<Link to="/gallery">
+							<button
+								type="button"
+								className="text-white btn  btn-sm d-flex align-items-center mt-3 mr-3">
+								<i className="fas fa-arrow-left mr-3" />
+								Back
+							</button>
+						</Link>
 						<button
 							type="button"
 							className="btn bg-white mt-3"
